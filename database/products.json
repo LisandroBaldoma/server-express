@@ -1,0 +1,102 @@
+[
+  {
+    "id": "2",
+    "title": "Product2",
+    "description": "Producto de Prueba",
+    "stock": 25,
+    "code": "ABCprueba02",
+    "price": 23530,
+    "img": "Sin imagen",
+    "category": "Prueba"
+  },
+  {
+    "id": "dd44e0e5-0310-4cd5-a378-fe2b588bd0ec",
+    "title": "Product3",
+    "description": "Producto de Prueba",
+    "stock": 25,
+    "code": "ABCprueba03",
+    "price": 23530,
+    "img": "Sin imagen",
+    "category": "Prueba"
+  },
+  {
+    "id": "aee79dc5-96cd-47a5-bd35-a2d1a588c863",
+    "title": "Product4",
+    "description": "Producto de Prueba",
+    "stock": 25,
+    "code": "ABCprueba04",
+    "price": 23530,
+    "img": "Sin imagen",
+    "category": "Prueba"
+  },
+  {
+    "id": "eb2fad3c-d055-4e31-b437-f3ef7ecb9587",
+    "title": "Product5",
+    "description": "Producto de Prueba",
+    "stock": 25,
+    "code": "ABCprueba05",
+    "price": 23530,
+    "img": "Sin imagen",
+    "category": "Prueba"
+  },
+  {
+    "id": "84607318-7364-413b-a122-f5b4b940ce67",
+    "title": "Product6",
+    "description": "Producto de Prueba",
+    "stock": 25,
+    "code": "ABCprueba06",
+    "price": 23530,
+    "img": "Sin imagen",
+    "category": "Prueba"
+  },
+  {
+    "id": "38695f28-47f2-4815-8f3c-66f4160cbe77",
+    "title": "Product7",
+    "description": "Producto de Prueba",
+    "stock": 25,
+    "code": "ABCprueba07",
+    "price": 23530,
+    "img": "Sin imagen",
+    "category": "Prueba"
+  },
+  {
+    "id": "71f5b788-959c-4489-b89f-1612e9cda421",
+    "title": "Product8",
+    "description": "Producto de Prueba",
+    "stock": 25,
+    "code": "ABCprueba08",
+    "price": 23530,
+    "img": "Sin imagen",
+    "category": "Prueba"
+  },
+  {
+    "id": "4c84abaf-286e-4d5f-ae62-fd618ebbbfb1",
+    "title": "Product9",
+    "description": "Producto de Prueba",
+    "stock": 25,
+    "code": "ABCprueba09",
+    "price": 23530,
+    "img": "Sin imagen",
+    "category": "Prueba"
+  },
+  {
+    "id": "6880e789-c502-4098-ae18-47a41fec9d9f",
+    "title": "Product10",
+    "description": "Producto de Prueba",
+    "stock": 25,
+    "code": "ABCprueba10",
+    "price": 23530,
+    "img": "Sin imagen",
+    "category": "Prueba"
+  },
+  {
+    "id": "ab6882be-8fdb-4292-bf31-4f87f6e0ca8c",
+    "title": "Product10",
+    "description": "Producto de Prueba",
+    "stock": 25,
+    "code": "ABCpruebass10",
+    "price": 23530,
+    "img": "Sin imagen",
+    "category": "Prueba-ultimo"
+  }
+]
