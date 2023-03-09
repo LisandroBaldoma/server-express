@@ -1,18 +1,5 @@
 [
   {
-    "id": "eb2fad3c-d055-4e31-b437-f3ef7ecb9587",
-    "title": "Product5",
-    "description": "Producto de Prueba",
-    "stock": 25,
-    "code": "ABCprueba05",
-    "price": 23530,
-    "status": true,
-    "thumbnails": [
-      "Sin imagen"
-    ],
-    "category": "Prueba"
-  },
-  {
     "id": "38695f28-47f2-4815-8f3c-66f4160cbe77",
     "title": "Product7",
     "description": "Producto de Prueba",
@@ -121,6 +108,19 @@
     "title": "ProductPostman",
     "description": "Producto de Prueba Postman",
     "code": "ABCpruebaf06XXXPostman",
+    "price": 23530,
+    "status": true,
+    "stock": 25,
+    "thumbnails": [
+      "Sin imagen"
+    ],
+    "category": "Postman"
+  },
+  {
+    "id": "b20ee0a7-a89b-43b2-8bf3-c8d15fc9efab",
+    "title": "ProductPostman",
+    "description": "Producto de Prueba Postman",
+    "code": "ABCprusebaf06XXXPostman",
     "price": 23530,
     "status": true,
     "stock": 25,
