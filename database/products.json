@@ -1,52 +1,15 @@
 [
   {
-    "id": "2",
-    "title": "Product2",
-    "description": "Producto de Prueba",
-    "stock": 25,
-    "code": "ABCprueba02",
-    "price": 23530,
-    "img": "Sin imagen",
-    "category": "Prueba"
-  },
-  {
-    "id": "dd44e0e5-0310-4cd5-a378-fe2b588bd0ec",
-    "title": "Product3",
-    "description": "Producto de Prueba",
-    "stock": 25,
-    "code": "ABCprueba03",
-    "price": 23530,
-    "img": "Sin imagen",
-    "category": "Prueba"
-  },
-  {
-    "id": "aee79dc5-96cd-47a5-bd35-a2d1a588c863",
-    "title": "Product4",
-    "description": "Producto de Prueba",
-    "stock": 25,
-    "code": "ABCprueba04",
-    "price": 23530,
-    "img": "Sin imagen",
-    "category": "Prueba"
-  },
-  {
     "id": "eb2fad3c-d055-4e31-b437-f3ef7ecb9587",
     "title": "Product5",
     "description": "Producto de Prueba",
     "stock": 25,
     "code": "ABCprueba05",
     "price": 23530,
-    "img": "Sin imagen",
-    "category": "Prueba"
-  },
-  {
-    "id": "84607318-7364-413b-a122-f5b4b940ce67",
-    "title": "Product6",
-    "description": "Producto de Prueba",
-    "stock": 25,
-    "code": "ABCprueba06",
-    "price": 23530,
-    "img": "Sin imagen",
+    "status": true,
+    "thumbnails": [
+      "Sin imagen"
+    ],
     "category": "Prueba"
   },
   {
@@ -56,7 +19,10 @@
     "stock": 25,
     "code": "ABCprueba07",
     "price": 23530,
-    "img": "Sin imagen",
+    "status": true,
+    "thumbnails": [
+      "Sin imagen"
+    ],
     "category": "Prueba"
   },
   {
@@ -66,7 +32,10 @@
     "stock": 25,
     "code": "ABCprueba08",
     "price": 23530,
-    "img": "Sin imagen",
+    "status": true,
+    "thumbnails": [
+      "Sin imagen"
+    ],
     "category": "Prueba"
   },
   {
@@ -76,7 +45,10 @@
     "stock": 25,
     "code": "ABCprueba09",
     "price": 23530,
-    "img": "Sin imagen",
+    "status": true,
+    "thumbnails": [
+      "Sin imagen"
+    ],
     "category": "Prueba"
   },
   {
@@ -86,7 +58,10 @@
     "stock": 25,
     "code": "ABCprueba10",
     "price": 23530,
-    "img": "Sin imagen",
+    "status": true,
+    "thumbnails": [
+      "Sin imagen"
+    ],
     "category": "Prueba"
   },
   {
@@ -96,7 +71,62 @@
     "stock": 25,
     "code": "ABCpruebass10",
     "price": 23530,
-    "img": "Sin imagen",
+    "status": true,
+    "thumbnails": [
+      "Sin imagen"
+    ],
     "category": "Prueba-ultimo"
+  },
+  {
+    "id": "9708bf17-34f7-4981-907c-d1375085ff3d",
+    "title": "Product10",
+    "description": "Producto de Prueba",
+    "code": "constatus2222",
+    "price": 23530,
+    "status": true,
+    "stock": 25,
+    "thumbnails": [
+      "Sin imagen"
+    ],
+    "category": "Prueba-ultimo"
+  },
+  {
+    "id": "f3e088ae-8d79-475a-9951-b28127c25d3a",
+    "title": "ProductPostman",
+    "description": "Producto de Prueba Postman",
+    "code": "ABCprueba06Postman",
+    "price": 23530,
+    "status": true,
+    "stock": 25,
+    "thumbnails": [
+      "Sin imagen"
+    ],
+    "category": "Postman"
+  },
+  {
+    "id": "18258e73-5acd-4a83-8504-076e4c3bd954",
+    "title": "ProductPostman",
+    "description": "Producto de Prueba Postman",
+    "code": "ABCprueba06XXXPostman",
+    "price": 23530,
+    "status": true,
+    "stock": 25,
+    "thumbnails": [
+      "Sin imagen"
+    ],
+    "category": "Postman"
+  },
+  {
+    "id": "eb4a65d0-6b4e-4ac4-996c-ca7bca1a9f91",
+    "title": "ProductPostman",
+    "description": "Producto de Prueba Postman",
+    "code": "ABCpruebaf06XXXPostman",
+    "price": 23530,
+    "status": true,
+    "stock": 25,
+    "thumbnails": [
+      "Sin imagen"
+    ],
+    "category": "Postman"
   }
 ]

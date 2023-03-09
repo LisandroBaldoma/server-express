@@ -1,6 +1,7 @@
 import { Product } from "./Product.js";
 import fs from "fs/promises";
 import { randomUUID } from "crypto";
+import { IDNOTFOUND,CODEXIST,EMPTY } from './error/codError.js'
 
 export class ProductManager {
   #ruta;
@@ -19,7 +20,7 @@ export class ProductManager {
   async getProducts() {
     await this.#readProducts();
     if (this.#products.length === 0) {
-      throw new Error("No hay productos cargados");
+      throw new Error(EMPTY);
     }
     return this.#products;
   }
@@ -29,7 +30,8 @@ export class ProductManager {
     stock,
     code,
     price,
-    img,
+    status,
+    thumbnails,
     category,
     id = randomUUID(),
   }) {
@@ -40,13 +42,14 @@ export class ProductManager {
       stock,
       code,
       price,
-      img,
+      status,
+      thumbnails,
       category,
       id,
     });
     const product = this.#products.find((prod) => prod.code === newProduct.code);
     if (product) {
-      throw new Error("El codigo del producto ya existe");
+      throw new Error(CODEXIST);
     }
     this.#products.push(newProduct);
     await this.#writeProduct();
@@ -56,34 +59,34 @@ export class ProductManager {
     await this.#readProducts();
     const product = this.#products.find((prod) => prod.id === id);
     if (!product) {
-      throw new Error(`No existen productos con id ${id}`);
+      throw new Error(IDNOTFOUND);
     }
     return product;
   }
-  async updateProduct(id, update) {
-    if (Object.hasOwn(update, "id")) {
-      delete update["id"];
+  async updateProduct(id, CamposUpdate) {
+    if (Object.hasOwn(CamposUpdate, "id")) {
+      delete CamposUpdate["id"];
     }
-
     await this.#readProducts();
     const index = this.#products.findIndex((prod) => prod.id === id);
     if (index === -1) {
-      throw new Error("El producto que desea actualizar no Existe");
+      throw new Error(IDNOTFOUND);
     } else {
-      const newUpdate = { ...this.#products[index], ...update };
-      this.#products.splice(index, 1, newUpdate);
+      const newProductUpdate = { ...this.#products[index], ...CamposUpdate };
+      this.#products.splice(index, 1, newProductUpdate);
       await this.#writeProduct();
-      return this.#products;
+      return this.#products[index];
     }
   }
   async deletedProduct(id) {
     await this.#readProducts();
     const index = this.#products.findIndex((prod) => prod.id === id);
     if (index === -1) {
-      throw new Error("El producto que desea eliminar no existe");
+      throw new Error(IDNOTFOUND);
     } else {
       this.#products.splice(index, 1);
       this.#writeProduct();
+      return this.#products[index]
     }
   }
 }
