@@ -52,19 +52,6 @@
     "category": "Prueba"
   },
   {
-    "id": "ab6882be-8fdb-4292-bf31-4f87f6e0ca8c",
-    "title": "Product10",
-    "description": "Producto de Prueba",
-    "stock": 25,
-    "code": "ABCpruebass10",
-    "price": 23530,
-    "status": true,
-    "thumbnails": [
-      "Sin imagen"
-    ],
-    "category": "Prueba-ultimo"
-  },
-  {
     "id": "9708bf17-34f7-4981-907c-d1375085ff3d",
     "title": "Product10",
     "description": "Producto de Prueba",
@@ -121,6 +108,19 @@
     "title": "ProductPostman",
     "description": "Producto de Prueba Postman",
     "code": "ABCprusebaf06XXXPostman",
+    "price": 23530,
+    "status": true,
+    "stock": 25,
+    "thumbnails": [
+      "Sin imagen"
+    ],
+    "category": "Postman"
+  },
+  {
+    "id": "3fa3d889-f363-40ee-9037-35933ac18181",
+    "title": "ProductPostman",
+    "description": "Producto de Prueba Postman",
+    "code": "ABantesden",
     "price": 23530,
     "status": true,
     "stock": 25,
