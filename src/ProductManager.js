@@ -20,7 +20,7 @@ export class ProductManager {
   async getProducts() {
     await this.#readProducts();
     if (this.#products.length === 0) {
-      throw new Error(EMPTY);
+      return this.#products
     }
     return this.#products;
   }

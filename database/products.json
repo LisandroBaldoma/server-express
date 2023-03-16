@@ -128,5 +128,38 @@
       "Sin imagen"
     ],
     "category": "Postman"
+  },
+  {
+    "id": "45bf5892-951a-41cd-90f4-41f4f20cce2d",
+    "title": "a",
+    "description": "a",
+    "code": "a",
+    "price": "2",
+    "status": "true",
+    "stock": "2",
+    "thumbnails": "Sin-Imagen",
+    "category": "a"
+  },
+  {
+    "id": "9d934e1d-a1bc-4923-9dda-e7ce9fde3105",
+    "title": "lisandro",
+    "description": "baldoam",
+    "code": "sddsa",
+    "price": "23",
+    "status": "false",
+    "stock": "23",
+    "thumbnails": "Sin-Imagen",
+    "category": "dasdadas"
+  },
+  {
+    "id": "4b79ad03-7f8f-4036-8c87-fa02ea545654",
+    "title": "a",
+    "description": "a",
+    "code": "dasdasd",
+    "price": "2",
+    "status": "true",
+    "stock": "22",
+    "thumbnails": "Sin-Imagen",
+    "category": "adsad"
   }
 ]

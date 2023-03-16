@@ -1,0 +1,1 @@
+console.log("estoy usando handlebars desde el front")
