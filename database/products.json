@@ -1,11 +1,11 @@
 [
   {
     "id": "38695f28-47f2-4815-8f3c-66f4160cbe77",
-    "title": "Product7",
+    "title": "Product1",
     "description": "Producto de Prueba",
     "stock": 25,
-    "code": "ABCprueba07",
-    "price": 23530,
+    "code": "ABCprueba01",
+    "price": 456788,
     "status": true,
     "thumbnails": [
       "Sin imagen"
@@ -14,11 +14,11 @@
   },
   {
     "id": "71f5b788-959c-4489-b89f-1612e9cda421",
-    "title": "Product8",
-    "description": "Producto de Prueba",
+    "title": "Product2",
+    "description": "Producto de Prueba02",
     "stock": 25,
     "code": "ABCprueba08",
-    "price": 23530,
+    "price": 33567,
     "status": true,
     "thumbnails": [
       "Sin imagen"
@@ -27,11 +27,11 @@
   },
   {
     "id": "4c84abaf-286e-4d5f-ae62-fd618ebbbfb1",
-    "title": "Product9",
-    "description": "Producto de Prueba",
+    "title": "Product3",
+    "description": "Producto de Prueba03",
     "stock": 25,
     "code": "ABCprueba09",
-    "price": 23530,
+    "price": 2343,
     "status": true,
     "thumbnails": [
       "Sin imagen"
@@ -40,11 +40,11 @@
   },
   {
     "id": "6880e789-c502-4098-ae18-47a41fec9d9f",
-    "title": "Product10",
-    "description": "Producto de Prueba",
+    "title": "Product4",
+    "description": "Producto de Prueba04",
     "stock": 25,
     "code": "ABCprueba10",
-    "price": 23530,
+    "price": 9872,
     "status": true,
     "thumbnails": [
       "Sin imagen"
@@ -52,24 +52,11 @@
     "category": "Prueba"
   },
   {
-    "id": "9708bf17-34f7-4981-907c-d1375085ff3d",
-    "title": "Product10",
-    "description": "Producto de Prueba",
-    "code": "constatus2222",
-    "price": 23530,
-    "status": true,
-    "stock": 25,
-    "thumbnails": [
-      "Sin imagen"
-    ],
-    "category": "Prueba-ultimo"
-  },
-  {
     "id": "f3e088ae-8d79-475a-9951-b28127c25d3a",
-    "title": "ProductPostman",
-    "description": "Producto de Prueba Postman",
+    "title": "Product6",
+    "description": "Producto de Prueba05",
     "code": "ABCprueba06Postman",
-    "price": 23530,
+    "price": 8765,
     "status": true,
     "stock": 25,
     "thumbnails": [
@@ -79,36 +66,10 @@
   },
   {
     "id": "18258e73-5acd-4a83-8504-076e4c3bd954",
-    "title": "ProductPostman",
-    "description": "Producto de Prueba Postman",
+    "title": "Product6",
+    "description": "Producto de Prueba06",
     "code": "ABCprueba06XXXPostman",
-    "price": 23530,
-    "status": true,
-    "stock": 25,
-    "thumbnails": [
-      "Sin imagen"
-    ],
-    "category": "Postman"
-  },
-  {
-    "id": "eb4a65d0-6b4e-4ac4-996c-ca7bca1a9f91",
-    "title": "ProductPostman",
-    "description": "Producto de Prueba Postman",
-    "code": "ABCpruebaf06XXXPostman",
-    "price": 23530,
-    "status": true,
-    "stock": 25,
-    "thumbnails": [
-      "Sin imagen"
-    ],
-    "category": "Postman"
-  },
-  {
-    "id": "b20ee0a7-a89b-43b2-8bf3-c8d15fc9efab",
-    "title": "ProductPostman",
-    "description": "Producto de Prueba Postman",
-    "code": "ABCprusebaf06XXXPostman",
-    "price": 23530,
+    "price": 1234,
     "status": true,
     "stock": 25,
     "thumbnails": [
@@ -118,10 +79,10 @@
   },
   {
     "id": "3fa3d889-f363-40ee-9037-35933ac18181",
-    "title": "ProductPostman",
-    "description": "Producto de Prueba Postman",
+    "title": "Product9",
+    "description": "Producto de Prueba09",
     "code": "ABantesden",
-    "price": 23530,
+    "price": 1234,
     "status": true,
     "stock": 25,
     "thumbnails": [
@@ -130,36 +91,36 @@
     "category": "Postman"
   },
   {
-    "id": "45bf5892-951a-41cd-90f4-41f4f20cce2d",
-    "title": "a",
-    "description": "a",
-    "code": "a",
-    "price": "2",
+    "id": "fb3a08b5-d6a8-4a25-8fc0-4038e1d8f843",
+    "title": "Heladera",
+    "description": "Heladera-NoFrost",
+    "code": "heladera-nofrost-blanca",
+    "price": "87654",
     "status": "true",
-    "stock": "2",
+    "stock": "12",
     "thumbnails": "Sin-Imagen",
-    "category": "a"
+    "category": "LineaBlanca"
   },
   {
-    "id": "9d934e1d-a1bc-4923-9dda-e7ce9fde3105",
-    "title": "lisandro",
-    "description": "baldoam",
-    "code": "sddsa",
-    "price": "23",
-    "status": "false",
-    "stock": "23",
+    "id": "84885fdd-395f-4dfb-9c29-037769bf1e4e",
+    "title": "Televisor led 32¨",
+    "description": "Tele-led-32",
+    "code": "tv-led-32-smart",
+    "price": "13456",
+    "status": "true",
+    "stock": "12",
     "thumbnails": "Sin-Imagen",
-    "category": "dasdadas"
+    "category": "tv-audio-video"
   },
   {
-    "id": "4b79ad03-7f8f-4036-8c87-fa02ea545654",
-    "title": "a",
-    "description": "a",
-    "code": "dasdasd",
-    "price": "2",
+    "id": "ed9f0a71-829c-425d-b0ba-ad0000edaf71",
+    "title": "Computadora",
+    "description": "32gb-ssd-intel",
+    "code": "lenovo-black-led",
+    "price": "123876",
     "status": "true",
-    "stock": "22",
+    "stock": "9",
     "thumbnails": "Sin-Imagen",
-    "category": "adsad"
+    "category": "Computadoras"
   }
 ]

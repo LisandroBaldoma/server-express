@@ -1,122 +1,134 @@
 <h2 class="text-center">Lista de productos</h2>
 
-<table class="table table-striped container" >
-  <thead>
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Title</th>
-      <th scope="col">Description</th>
-      <th scope="col">Stock</th>
-      <th scope="col">Code</th>
-      <th scope="col">Price</th>
-      <th scope="col">Status</th>
-      <th scope="col">thumbnails</th>
-      <th scope="col">Category</th>
-    </tr>
-  </thead>
-  <tbody id="bodyProductsList">
-    {{#if products}}
-      {{#each productsList}}
-        <tr>
-          <th scope="row">{{this.id}}</th>
-          <td>{{this.title}}</td>
-          <td>{{this.description}}</td>
-          <td>{{this.stock}}</td>
-          <td>{{this.code}}</td>
-          <td>{{this.price}}</td>
-          <td>{{this.status}}</td>
-          <td>{{this.thumbnails}}</td>
-          <td>{{this.category}}</td>
-        </tr>
-      {{/each}}
-    {{else}}
-      <p>No hay productos para mostrar</p>
-    {{/if}}
-  </tbody>
-</table>
-<div class="container">
-<form class="row g-3 needs-validation" novalidate>
-  <div class="container text-center shadow-lg p-3 mb-5 bg-body-tertiary rounded m-3">
-    <div class="row g-3 m-3">
-      <div class="col-md-3">
-        <label for="title" class="form-label">Title</label>
-        <input type="text" class="form-control" id="title" value="" required />
+<div class="container pt-5" id="tableContainer">
+  
+  
+</div>
+
+<!-- Modal Add Product -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Product</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
-      <div class="col-md-3">
-        <label for="Description" class="form-label">Description</label>
-        <input
-          type="text"
-          class="form-control"
-          id="description"
-          value=""
-          required
-        />
+      <div class="modal-body">
+        <form
+          class="row g-3 needs-validation justify-content-center"
+          novalidate
+        >
+          <div class="row text-center">
+            <div class="col-6">
+              <label for="title" class="form-label">Title</label>
+              <input
+                type="text"
+                class="form-control"
+                id="title"
+                value=""
+                required
+              />
+            </div>
+            <div class="col-6">
+              <label for="Description" class="form-label">Description</label>
+              <input
+                type="text"
+                class="form-control"
+                id="description"
+                value=""
+                required
+              />
+            </div>
+          </div>
+          <div class="row text-center">
+            <div class="col-6">
+              <label for="stock" class="form-label">Stock</label>
+              <input
+                type="number"
+                class="form-control"
+                id="stock"
+                value=""
+                required
+              />
+            </div>
+            <div class="col-6">
+              <label class="form-label">Price</label>
+              <input
+                type="number"
+                class="form-control"
+                id="price"
+                value=""
+                required
+              />
+
+            </div>
+          </div>
+          <div class="row text-center">
+            <div class="col-6">
+              <label for="code" class="form-label">Code</label>
+              <input
+                type="text"
+                class="form-control"
+                id="code"
+                value=""
+                required
+              />
+            </div>
+            <div class="col-6">
+              <label for="category" class="form-label">Category</label>
+              <input
+                type="text"
+                class="form-control"
+                id="category"
+                value=""
+                required
+              />
+            </div>
+          </div>
+          <div class="row text-center">
+            <div class="col-6">
+              <label class="form-label">Thumbnails</label>
+              <input
+                type="text"
+                class="form-control"
+                id="thumbnails"
+                value="Sin-Imagen"
+              />
+            </div>
+            <div class="col-6">
+              <label for="status">status</label>
+              <select name="status" class="form-select" id="status" required>
+                <option selected disabled value="">Selecciones...</option>
+                <option>true</option>
+                <option>false</option>
+              </select>
+            </div>
+          </div>
+        </form>
       </div>
-      <div class="col-md-3">
-        <label for="stock" class="form-label">Stock</label>
-        <input
-          type="number"
-          class="form-control"
-          id="stock"
-          value=""
-          required
-        />
-      </div>
-      <div class="col-md-3">
-        <label for="code" class="form-label">Code</label>
-        <input type="text" class="form-control" id="code" value="" required />
-      </div>
-    </div>
-    <div class="row g-3 m-3">
-      <div class="col-md-3">
-        <label class="form-label">Price</label>
-        <input
-          type="number"
-          class="form-control"
-          id="price"
-          value=""
-          required
-        />
-      </div>
-      <div class="col-md-3">
-        <label for="status">status</label>
-        <select name="status" class="form-select" id="status" required>
-          <option selected disabled value="">Selecciones...</option>
-          <option>true</option>
-          <option>false</option>
-        </select>
-      </div>
-      <div class="col-md-3">
-        <label class="form-label">Thumbnails</label>
-        <input
-          type="text"
-          class="form-control"
-          id="thumbnails"
-          value="Sin-Imagen"
-        />
-      </div>
-      <div class="col-md-3">
-        <label for="category" class="form-label">Category</label>
-        <input
-          type="text"
-          class="form-control"
-          id="category"
-          value=""
-          required
-        />
-      </div>
-    </div>
-    <div class="row p-2 m-3">
-      <div class="col-md-12 ">
-        <button type="submit" class="btn btn-primary" id="btn-socketIO">Agregar Producto</button>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="btnAddProductForm">Agregar
+          Producto</button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >Close</button>
       </div>
     </div>
   </div>
-</form>
 </div>
 
-
 <script src="/socket.io/socket.io.js"></script>
-
 <script src="/static/js/productsList.js"></script>
-

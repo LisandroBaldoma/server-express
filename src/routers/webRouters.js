@@ -9,7 +9,7 @@ const pm = new ProductManager("./database/products.json")
 
 webRouters.get("/", (req, res, next) => {
   res.render("home", {
-    body: "Bienvenido a Backend NODE JS- EXPRESS - MONGODB",
+    body: "Bienvenido a Backend NODE JS - EXPRESS - HANDLEBARS - SOCKET.IO",
     title: "E-commerce Backend",
   });
 });
@@ -18,15 +18,18 @@ webRouters.get("/register", (req, res, next) => {
   res.render("registerForm");
 });
 
+
 webRouters.get("/realtimeproducts", async (req, res, next) => {
+    
   try {
-    const products = await pm.getProducts();
-    res.render("productsList", {
+    //const products = await pm.getProducts();
+    //res.sendStatus(200)
+    res.render("productsList"/*, {
     products: products.length > 0,
     productsList: products,
-  });
+  }*/);
   } catch (error) {
     next(error)
   }
-  
+
 });
