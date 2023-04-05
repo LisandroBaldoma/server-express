@@ -78,19 +78,6 @@
     "category": "Postman"
   },
   {
-    "id": "3fa3d889-f363-40ee-9037-35933ac18181",
-    "title": "Product9",
-    "description": "Producto de Prueba09",
-    "code": "ABantesden",
-    "price": 1234,
-    "status": true,
-    "stock": 25,
-    "thumbnails": [
-      "Sin imagen"
-    ],
-    "category": "Postman"
-  },
-  {
     "id": "fb3a08b5-d6a8-4a25-8fc0-4038e1d8f843",
     "title": "Heladera",
     "description": "Heladera-NoFrost",
