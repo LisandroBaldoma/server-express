@@ -1,3 +1,23 @@
 [
-
+  {
+    "name": "Lisandro",
+    "lastName": "Baldoma",
+    "email": "lilianamanovelli@hotmail.com",
+    "password": "160f0367019f590d590ab5549fbdf01c589feca9c11662421598c378fd5346c4",
+    "salt": "pOxxRwdGVrP/SgYaX0udEE+k88CpPHRo76RqjqwMyTuWhSfu7yRx7yTDF6QPQX6/7VupflUWIB5itKkpwEOWft1OU65m6HStPQnaT2lQNWke3uL3Pgp+NesJ0+64GbYRoEdV1ny9gGQKo4DEUPsv9NmeI1gKf+IYGXnvmIoTwyI="
+  },
+  {
+    "name": "Lisandro",
+    "lastName": "Baldoma",
+    "email": "baldomalisandro@hotmail.com",
+    "password": "07d732d72e04f9b6a7cde39182667255671c18ef3d5a6ef703fcbcbb77d2679d",
+    "salt": "FWXCt4JeTgW4QBRMY4orbxPociHz+v5ORSPBm70vC9m5gHAJXQDkSOPFYO80mTSHcOMdC08OO7Ox5vmu+RvdknkUTXCzLOX0gsoKxkTP2GyHdw3JRWpwOV9ru5StrOEw4ijnstKMW9UDmjXXlvZ4vTnb0Klh4mqYK68oKs5fzuA="
+  },
+  {
+    "name": "emir",
+    "lastName": "emir",
+    "email": "dasdsa@dasdasd.com",
+    "password": "a36e4663caa4389fa44e0f1ab80026a4aed960fb747062909c11c27f60df69c9",
+    "salt": "aobeLwXpN+Vuq2/mOEDnelEGdhDWs+/E4XGr0PUzRYGvxUa4erBrg5Hnt7WxPFRhurxiLuZkXRl+ydUiajVPhrbJkCnLhBbqZo1CqHiCRY/p57VuXyZ7XZiQ9jCpoC7SQeuD+K96q0xawxIXNd/rxP29nT5jbtdmaQHbg4v79F0="
+  }
 ]

@@ -1,18 +1,21 @@
 import express, { Router } from "express"
+import { PORT } from "./config/servidor.config.js"
 import { apiRouters } from "./routers/apiRouters.js"
 import { webRouters } from "./routers/webRouters.js"
 import { IDNOTFOUND,CODEXIST,EMPTY } from './error/codError.js'
 import { engine } from 'express-handlebars'
 import  { Server as SocketIOServer } from 'socket.io'
 import IOSocket from './IOSocket.js'
+import { conectarMongooseDb } from "./database/mongoose.js"
 
 // Configuracion Server 
 const app = express();
-const PORT = 8080
+//const PORT = 8080
 const httpServer = app.listen(PORT, () => { console.log(`Escuchando en puerto ${PORT}`) });
-// me permite entblar una comunnicacion entre los socket del servidor y del cliente
+// me permite entAblar una comunnicacion entre los socket del servidor y del cliente
 const io = new SocketIOServer(httpServer) 
 
+await conectarMongooseDb();
 IOSocket(io);
 
 // Configuracion Hanglebars

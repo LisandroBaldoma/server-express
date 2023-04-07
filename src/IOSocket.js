@@ -1,4 +1,4 @@
-import { ProductManager } from "./ProductManager.js";
+import { ProductManager } from "./managers/fileSystem/ProductManager.js";
 
 export default async (io) => {
   const pm = new ProductManager("./database/products.json");

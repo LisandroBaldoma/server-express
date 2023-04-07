@@ -1,7 +1,7 @@
-import { Product } from "./Product.js";
+import { Product } from "./models/Product.js";
 import fs from "fs/promises";
 import { randomUUID } from "crypto";
-import { IDNOTFOUND,CODEXIST,EMPTY } from './error/codError.js'
+import { IDNOTFOUND,CODEXIST,EMPTY } from '../../error/codError.js'
 
 export class ProductManager {
   #ruta;

@@ -1,7 +1,7 @@
-import { Cart } from './Cart.js'
+import { Cart } from './models/Cart.js'
 import fs from "fs/promises";
 import { randomUUID } from "crypto";
-import { IDNOTFOUND } from './error/codError.js'
+import { IDNOTFOUND } from '../../error/codError.js'
 
 export class CartManager {
     #rutaProduct

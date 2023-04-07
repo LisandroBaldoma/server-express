@@ -1,5 +1,5 @@
 import express, { Router } from "express"
-import {UserManager} from '../UserManager.js'
+import {UserManager} from '../managers/fileSystem/UserManager.js'
 
 export const userRouter = Router()
 

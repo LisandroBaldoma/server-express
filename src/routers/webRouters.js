@@ -1,6 +1,10 @@
 import express, { Router } from "express";
-import { UserManager } from "../UserManager.js";
-import { ProductManager } from "../ProductManager.js";
+import { UserManager } from "../managers/fileSystem/UserManager.js";
+import { ProductManager } from "../managers/fileSystem/ProductManager.js";
+//import { productDb } from "../database/mongoose.js";
+import { productsManager } from "../managers/mongoodb/product.manager.js";
+
+
 
 export const webRouters = Router();
 
@@ -32,4 +36,33 @@ webRouters.get("/realtimeproducts", async (req, res, next) => {
     next(error)
   }
 
+});
+
+webRouters.get("/addproduct", async (req, res, next) => {
+
+  //const products = await productDb.find().lean();
+  const products = await productsManager.getProducts();
+  
+  try {
+    res.render("productsListF", {
+         products: products.length > 0,
+         productsList: products,
+     });
+    
+  } catch (error) {
+    next(error)
+  }
+
+
+  // try {
+  //   const products = await pm.getProducts();
+  //   res.sendStatus(200)
+  //   res.render("productsListF", {
+  //   products: products.length > 0,
+  //   productsList: products,
+  // });
+  // } catch (error) {
+  //   next(error)
+  // }
+  
 });

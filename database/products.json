@@ -109,5 +109,18 @@
     "stock": "9",
     "thumbnails": "Sin-Imagen",
     "category": "Computadoras"
+  },
+  {
+    "id": "9b06a2fb-b31e-40c4-80f9-1362eeb97ec8",
+    "title": "ProductPostman",
+    "description": "Producto de Prueba Postman",
+    "code": "ABantesden",
+    "price": 23530,
+    "status": true,
+    "stock": 25,
+    "thumbnails": [
+      "Sin imagen"
+    ],
+    "category": "Postman"
   }
 ]
