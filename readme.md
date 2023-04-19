@@ -44,6 +44,9 @@ Carrito de Compras: Solo devuelve un json con los productos que se agregaron por
 
 En la vista falto implementar la pagincion,
 
+# Persistencia Datos
+MongoDB
+
 # Observaciones
 Las vistas no estan terminadas completamente, los Test de los endPoint los hice con PostMan.
 Falto implementar paginacion en las vistas 
