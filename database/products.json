@@ -1,16 +1,16 @@
 [
   {
     "id": "38695f28-47f2-4815-8f3c-66f4160cbe77",
-    "title": "Product1",
-    "description": "Producto de Prueba",
+    "title": "Product10",
+    "description": "Producto de Prueba Update",
     "stock": 25,
-    "code": "ABCprueba01",
-    "price": 456788,
+    "code": "Update",
+    "price": 23530,
     "status": true,
     "thumbnails": [
       "Sin imagen"
     ],
-    "category": "Prueba"
+    "category": "updateUltimo"
   },
   {
     "id": "71f5b788-959c-4489-b89f-1612e9cda421",

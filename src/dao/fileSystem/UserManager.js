@@ -1,4 +1,4 @@
-import { User } from "./models/User.js";
+import { User } from "./User.js";
 import { encriptar, createSalt } from "../../utils/criptografia.js";
 import fs from "fs/promises";
 

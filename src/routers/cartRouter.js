@@ -1,28 +1,31 @@
-import express, { Router } from 'express'
-import { CartManager } from "../managers/fileSystem/CartManager.js"
+import express, { Router } from "express";
+//import { CartManager } from "../dao/fileSystem/CartManager.js";
+import {
+  addProductCart,
+  create,
+  deleteAllProductCart,
+  deleteProductCart,
+  getCartById,
+  updateProductsCart,
+  updateQuantiyCartProduct,
+} from "../controllers/cartsController.js";
 
-export const cartRouter = Router()
+export const cartRouter = Router();
 
-const cm = new CartManager("./database/cart.json", "./database/products.json" )
+// DAO FILE SYSTEM
+//const cm = new CartManager("./database/cart.json", "./database/products.json");
 
-cartRouter.post("/", async(req,res) => {
-    const newCart = await cm.createCart()    
-    res.send({status:"succes", payload:newCart})
-  })
-cartRouter.post("/:cid/product/:pid", async(req,res) => {
-    try {
-      const products = await cm.addProductCart(req.params.cid, req.params.pid)
-      res.send({status:"succes", payload:products})
-    } catch (error) {
-      res.status(400).json({status:"error", message: error.message})
-    }
-    
-  })
-cartRouter.get("/:id", async(req,res) => {
-  try {
-    const cart = await cm.getCartById(req.params.id)
-    res.send(cart)
-  } catch (error) {
-    res.status(404).json({message:error.message})
-  }    
-  }) 
+cartRouter.post("/", create);
+
+cartRouter.post("/:cid/product/:pid", addProductCart);
+
+cartRouter.get("/:cid", getCartById); //TODO GENERAR VISTA: VISUALIZAR LOS PRODUCTOS QUE PERTENEZCAN A CADA CARRITO
+
+cartRouter.delete("/:cid", deleteAllProductCart);
+
+cartRouter.delete("/:cid/product/:pid", deleteProductCart);
+
+cartRouter.put("/:cid", updateProductsCart);
+
+cartRouter.put("/:cid/product/:pid", updateQuantiyCartProduct);
+

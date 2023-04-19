@@ -1,8 +1,10 @@
 import express, { Router } from "express";
-import { UserManager } from "../managers/fileSystem/UserManager.js";
-import { ProductManager } from "../managers/fileSystem/ProductManager.js";
+import { UserManager } from "../dao/fileSystem/UserManager.js";
+import { ProductManager } from "../dao/fileSystem/ProductManager.js";
 //import { productDb } from "../database/mongoose.js";
-import { productsManager } from "../managers/mongoodb/product.manager.js";
+import { productsManager } from "../dao/mongoodb/product.manager.js";
+import { getProduct } from "../controllers/productsController.js";
+import productModel from "../dao/Models/Product.mongoose.js";
 
 
 
@@ -39,8 +41,7 @@ webRouters.get("/realtimeproducts", async (req, res, next) => {
 });
 
 webRouters.get("/addproduct", async (req, res, next) => {
-
-  //const products = await productDb.find().lean();
+  
   const products = await productsManager.getProducts();
   
   try {
@@ -51,18 +52,19 @@ webRouters.get("/addproduct", async (req, res, next) => {
     
   } catch (error) {
     next(error)
-  }
+  }  
 
-
-  // try {
-  //   const products = await pm.getProducts();
-  //   res.sendStatus(200)
-  //   res.render("productsListF", {
-  //   products: products.length > 0,
-  //   productsList: products,
-  // });
-  // } catch (error) {
-  //   next(error)
-  // }
-  
 });
+
+webRouters.get("/products", async (req, res, next) => {
+   const {docs, limit, totalPages} = await productModel.paginate({},{lean:true})    
+   console.log(docs)
+   
+    res.render("productsListF", {
+         products: docs.length > 0,
+         productsList: docs
+     });  
+
+});
+
+

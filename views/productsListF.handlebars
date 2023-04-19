@@ -6,12 +6,21 @@
   <!-- Button trigger modal -->
   <button
     type="button"
-    class="btn btn-primary"
+    class="btn btn-primary mb-3"
     data-bs-toggle="modal"
     data-bs-target="#exampleModal"
   >
     Add Product
   </button>
+  <a id="carritoCompra" href="http://">  
+  <button
+    type="button"
+    class="btn btn-success mb-3 mx-3"
+    id="cartPorduct"
+  >
+    Carrito de Compra
+  </button></a>
+  
 </div>
 <thead>
   <tr>
@@ -23,14 +32,15 @@
     <th>Price</th>
     <th>Status</th>
     <th>thumbnails</th>
-    <th>Category</th>    
+    <th>Category</th>
+    <th>Accion</th>    
   </tr>
 </thead>
 <tbody id="bodyProductsList">        
   {{#if products}}
     {{#each productsList}}
       <tr>
-        <th>{{this.id}}</th>
+        <th>{{this._id}}</th>
         <td>{{this.title}}</td>
         <td>{{this.description}}</td>
         <td>{{this.stock}}</td>
@@ -38,7 +48,10 @@
         <td>{{this.price}}</td>
         <td>{{this.status}}</td>
         <td>{{this.thumbnails}}</td>
-        <td>{{this.category}}</td>        
+        <td>{{this.category}}</td>
+        <td>
+          <button id={{this._id }} class="btn btn-secondary btnAddCart">AddCart</button>
+        </td>        
       </tr>
     {{/each}}
   {{else}}
