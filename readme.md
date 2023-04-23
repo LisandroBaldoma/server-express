@@ -45,36 +45,36 @@ http://localhost:8080/api/products **(implemente Paginate-V2)**
 	- query: string ( categoria el producto que desea buscar )
 
 Get ProductById
-http://localhost:8080/api/products/:id
+- http://localhost:8080/api/products/:id
 POST AddProduct
-http://localhost:8080/api/products
+- http://localhost:8080/api/products
 PUT UpdateProduct
-http://localhost:8080/api/products/:id
+- http://localhost:8080/api/products/:id
 DEL DeleteProduct
-http://localhost:8080/api/products/:id
+- http://localhost:8080/api/products/:id
 
 # EndPoint Carts
 POST AddCart
-http://localhost:8080/api/carts/
+- http://localhost:8080/api/carts/
 POST AddProductToCart
-http://localhost:8080/api/carts/:cid/product/:pid
+- http://localhost:8080/api/carts/:cid/product/:pid
 GET ProductCart
-http://localhost:8080/api/carts/:cid **(Implemente Populate)**
+- http://localhost:8080/api/carts/:cid **(Implemente Populate)**
 DEL DeleteProductCart
-http://localhost:8080/api/carts/:cid/product/:pid
+- http://localhost:8080/api/carts/:cid/product/:pid
 DEL DeleteAllProductCart
-http://localhost:8080/api/carts/:cid
+- http://localhost:8080/api/carts/:cid
 PUT UpdateProductsCart 
-http://localhost:8080/api/carts/:cid
+- http://localhost:8080/api/carts/:cid
 PUT UpdateQuantityCartProduct 
-http://localhost:8080/api/carts/:cid/product/:pid
+- http://localhost:8080/api/carts/:cid/product/:pid
 
 # View 
 
-http://localhost:8080/
+- http://localhost:8080/
 	 Esta vista en solo el HOME del proyecto. 
 
-http://localhost:8080/products
+- http://localhost:8080/products
 	En esta vista Se puede 
 
 - Agregar Productos nuevos AddProduct
@@ -82,7 +82,7 @@ http://localhost:8080/products
 - Se puede acceder al carrito de compras con el detalle de los productos que se agregaron al carrito
 - Cuenta con Paginacion 
 
-http://localhost:8080/carts/:cid
+- http://localhost:8080/carts/:cid
 	En esta vista se puede acceder al detalle de cualquier carrito que quiera consultar 
 
 # Testing ( Coleccion Postman para realizar los testing a todos los EndPoint )
