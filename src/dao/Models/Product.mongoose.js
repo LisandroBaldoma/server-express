@@ -12,7 +12,7 @@ export const schemaProduct = new Schema(
     code: { type: String, required: true }, // TODO AGREGAR PROPIEDAD UNIQUE Y PROBAR EL ERROR
     category: { type: String, required: true },
     thumbnails: { type: Array, required: true },
-    status: { type: Boolean, require: true },
+    status: { type: Boolean, required: true },
   },
   { versionKey: false }
 )

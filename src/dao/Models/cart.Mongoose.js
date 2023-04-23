@@ -7,11 +7,12 @@ export const schemaProduct = new Schema(
     products: {
       type: [
         {
-          product: {
+          id: {
             type: Schema.Types.ObjectId,
             ref: "products",
+            required: true,
           },
-          quantity: { type: Number },
+          quantity: { type: Number, required: true },
         },
       ],
     },

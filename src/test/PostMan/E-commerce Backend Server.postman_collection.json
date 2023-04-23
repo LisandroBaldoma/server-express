@@ -1,0 +1,429 @@
+{
+	"info": {
+		"_postman_id": "085cc322-3c10-4a37-91f3-e07be2868c89",
+		"name": "E-commerce Backend Server",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25926387"
+	},
+	"item": [
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "asc",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "4",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "query",
+									"value": "Linea Blanca",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductsById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/products/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddProduct",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "content",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Heladera Post\",\r\n    \"description\": \"Heladera NoFrost\",\r\n    \"stock\": 3,\r\n    \"code\": \"post heladera\",\r\n    \"price\": 123455,\r\n    \"status\": true,\r\n    \"thumbnails\": [\r\n      \"Sin imagen\"\r\n    ],\r\n    \"category\": \"Linea Blanca\"\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateProduct",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {              \r\n        \"title\": \"Heladera Samsung\",\r\n        \"description\": \"Heldera No-Frost- Inverter - Gris\",\r\n        \"stock\": 15,\r\n        \"code\": \"Sa,sung-nofrot \",\r\n        \"price\": 1234567,\r\n        \"status\": true,\r\n        \"thumbnails\": [\r\n            \"Sin imagen\"\r\n        ],\r\n        \"category\": \"Linea Blanca\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/products/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteProduct",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/products/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "AddCart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/carts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carts",
+								""
+							]
+						},
+						"description": "Crea un carrito vacio para compras"
+					},
+					"response": []
+				},
+				{
+					"name": "AddProductToCart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/carts/:cid/product/:pid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carts",
+								":cid",
+								"product",
+								":pid"
+							],
+							"variable": [
+								{
+									"key": "cid",
+									"value": ""
+								},
+								{
+									"key": "pid",
+									"value": ""
+								}
+							]
+						},
+						"description": "Agrega productos al carrito de compras por medio de params, para crear un producto dentro de un carrito especifico es necesario pasarles los id respectivos y existente idc=idCarrito idp=idProducto. si el producto no existe en el carrito crea una propiedad quantity que representa la cantidad de productos y si el producto exite suma 1 unidad mas a la propiedad cuantity."
+					},
+					"response": []
+				},
+				{
+					"name": "ProductsCart",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/carts/:cid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carts",
+								":cid"
+							],
+							"variable": [
+								{
+									"key": "cid",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteProductCart",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/carts/:cid/product/:pid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carts",
+								":cid",
+								"product",
+								":pid"
+							],
+							"variable": [
+								{
+									"key": "cid",
+									"value": ""
+								},
+								{
+									"key": "pid",
+									"value": ""
+								}
+							]
+						},
+						"description": "Agrega productos al carrito de compras por medio de params, para crear un producto dentro de un carrito especifico es necesario pasarles los id respectivos y existente idc=idCarrito idp=idProducto. si el producto no existe en el carrito crea una propiedad quantity que representa la cantidad de productos y si el producto exite suma 1 unidad mas a la propiedad cuantity."
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteAllProductCart",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/carts/:cid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carts",
+								":cid"
+							],
+							"query": [
+								{
+									"key": "cid",
+									"value": "643ca12dd28448302791ed01",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "cid",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateProductsCart",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n    \"id\": \"64316c46c1377ca6f46f2d33\",\r\n    \"quantity\": 3       \r\n    },\r\n    {\r\n    \"id\": \"6431748d7dd698f91c9daeaf\",\r\n    \"quantity\": 3       \r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/carts/:cid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carts",
+								":cid"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "cid",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateQuantiyCartProduct",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quantity\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/carts/:cid/product/:pid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carts",
+								":cid",
+								"product",
+								":pid"
+							],
+							"variable": [
+								{
+									"key": "cid",
+									"value": ""
+								},
+								{
+									"key": "pid",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
