@@ -13,7 +13,7 @@ export async function create(req, res, next) {
 
 export async function getProduct(req, res, next) {  
   try {
-    console.log(req.query)
+    //console.log(req.query)
     const result = await productsManager.getProducts(req.query);
     res.json(result);
   } catch (error) {
@@ -22,7 +22,7 @@ export async function getProduct(req, res, next) {
 }
 
 export async function getProductByID(req, res, next) {
-  console.log(req.query.id)
+  //console.log(req.query.id)
   try {
     const result = await productsManager.getProductByID(req.params.id);
     res.json(result);

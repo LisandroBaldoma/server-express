@@ -87,6 +87,7 @@ PUT UpdateQuantityCartProduct
 
 # Testing ( Coleccion Postman para realizar los testing a todos los EndPoint )
 - En la carpeta src/test/postman/E-commerce Backend Server.postman_collection.js
+- Podes importar la coleccion en POSTMAN y realizar los TEST a los endPoint
 
 
 
