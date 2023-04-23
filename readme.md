@@ -22,31 +22,6 @@
 #### Tercer paso ( Probar servidor )
 - Probar el servidor y realizar los test.
 
-### Features
-
-- Servidor Backend E-commerce.
-- Segunda Entrega Proyecto Final.
-
-
-#  Instrucciones para el correcto funcionamiento
-
-#### Primer paso ( Descargar el proyecto e instalar dependencias )
-- Clonar Repositorio
-- npm install
-
-#### Segundo paso ( Cargar Productos y Carrito de Testing en la BD )
-- Setear el String de conexion a la BD el archivo se encuentra en la carpeta src/config/database.config.js
-- Se puede optar por 2 opciones:
-	MongoDB Compass
-	MongoDB Atlas
-
-- Acceder a la carpeta src
-- Ejecutar el archivo testingCrear.js "node testingCrear.js" (Este archivo va a cargar los productos y carritos de prueba)
-- Ejecutar el servidor "npm test".
-
-#### Tercer paso ( Probar servidor )
-- Probar el servidor y realizar los test.
-
 #### Cuarto paso ( Elimnar Productos y Caritos de la BD )
 -  Una vez termiando con las pruebas puede eliminar los productos de la BD
 - Ejecutar el archivo testingEliminar.js "node testingEliminar.js".
