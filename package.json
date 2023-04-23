@@ -5,8 +5,8 @@
   "description": "",
   "main": "src/servidor.js",
   "scripts": {
-    "start": "node .",
-    "test": "nodemon ."
+    "start": "node .",    
+    "test": "nodemon -e 'html,handlebars,js,css' ."
   },
   "keywords": [],
   "author": "",

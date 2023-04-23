@@ -1,16 +1,26 @@
-<h1>VISTA CARRITO</h1>
+<h1 class="text-center">DETALLE CARRITO DE COMPRAS</h1>
 
-<h2>{{carts.produts.product}}</h2>
-
-
-{{#each cart.products}}
-      <tr>
-        <th>{{product._id}}</th>
-               
-      </tr>
-    {{/each}}
-
-
-
+<div class="d-flex justify-content-center m-4">
+  <div class="card" style="width: 30rem;">
+    <div class="card-header">
+      Carrito TESTING:
+      {{this.cart}}
+    </div>
+    <ul class="list-group list-group-flush">
+      {{#if products}}
+        {{#each productsList}}
+          <li class="list-group-item">producto:
+            {{this.id.title}}
+            - cantidad:
+            {{this.quantity}}
+            - Categoria:
+            {{this.id.category}}</li>
+        {{/each}}
+      {{else}}
+        <p>No hay productos para mostrar</p>
+      {{/if}}
+    </ul>
+  </div>
+</div>
 
 <script src="/static/js/cartView.js"></script>

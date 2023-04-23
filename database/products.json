@@ -1,95 +1,87 @@
 [
-  {
-    "id": "38695f28-47f2-4815-8f3c-66f4160cbe77",
-    "title": "Product10",
-    "description": "Producto de Prueba Update",
+  {    
+    "title": "Heladera",
+    "description": "Heladera Samsung No frost",
     "stock": 25,
-    "code": "Update",
+    "code": "heladera234nofros",
     "price": 23530,
     "status": true,
     "thumbnails": [
       "Sin imagen"
     ],
-    "category": "updateUltimo"
+    "category": "Linea Blanca"
   },
-  {
-    "id": "71f5b788-959c-4489-b89f-1612e9cda421",
-    "title": "Product2",
-    "description": "Producto de Prueba02",
+  {    
+    "title": "Computadora",
+    "description": "Pc Gamer",
     "stock": 25,
-    "code": "ABCprueba08",
+    "code": "pc256ssd8gb",
     "price": 33567,
     "status": true,
     "thumbnails": [
       "Sin imagen"
     ],
-    "category": "Prueba"
+    "category": "Electronica"
   },
-  {
-    "id": "4c84abaf-286e-4d5f-ae62-fd618ebbbfb1",
-    "title": "Product3",
-    "description": "Producto de Prueba03",
+  {    
+    "title": "Parlante",
+    "description": "Parlante JBL azul bluethoo",
     "stock": 25,
-    "code": "ABCprueba09",
+    "code": "jbl-blue2345",
     "price": 2343,
     "status": true,
     "thumbnails": [
       "Sin imagen"
     ],
-    "category": "Prueba"
+    "category": "Electronica"
   },
-  {
-    "id": "6880e789-c502-4098-ae18-47a41fec9d9f",
-    "title": "Product4",
-    "description": "Producto de Prueba04",
+  {    
+    "title": "Lavarropa",
+    "description": "Lavarropa 256KG WIFI",
     "stock": 25,
-    "code": "ABCprueba10",
+    "code": "lava-3456-wifi",
     "price": 9872,
     "status": true,
     "thumbnails": [
       "Sin imagen"
     ],
-    "category": "Prueba"
+    "category": "Linea Blanca"
   },
-  {
-    "id": "f3e088ae-8d79-475a-9951-b28127c25d3a",
-    "title": "Product6",
-    "description": "Producto de Prueba05",
-    "code": "ABCprueba06Postman",
+  {   
+    "title": "Monitor",
+    "description": "MOnitor TOPHOUSE 24' hdr",
+    "code": "Monitor24hdr34567",
     "price": 8765,
     "status": true,
     "stock": 25,
     "thumbnails": [
       "Sin imagen"
     ],
-    "category": "Postman"
+    "category": "Electronica"
   },
-  {
-    "id": "18258e73-5acd-4a83-8504-076e4c3bd954",
-    "title": "Product6",
-    "description": "Producto de Prueba06",
-    "code": "ABCprueba06XXXPostman",
+  {    
+    "title": "Televisor",
+    "description": "Tv Samsung 50' smart",
+    "code": "tv50smart3456",
     "price": 1234,
     "status": true,
     "stock": 25,
     "thumbnails": [
       "Sin imagen"
     ],
-    "category": "Postman"
+    "category": "Electronica"
   },
-  {
-    "id": "fb3a08b5-d6a8-4a25-8fc0-4038e1d8f843",
-    "title": "Heladera",
-    "description": "Heladera-NoFrost",
-    "code": "heladera-nofrost-blanca",
+  {    
+    "title": "Escritorio",
+    "description": "Escritorio Gamer 3 cajones",
+    "code": "escri-34mss23",
     "price": "87654",
     "status": "true",
     "stock": "12",
     "thumbnails": "Sin-Imagen",
-    "category": "LineaBlanca"
+    "category": "Muebles"
   },
-  {
-    "id": "84885fdd-395f-4dfb-9c29-037769bf1e4e",
+  {    
     "title": "Televisor led 32¨",
     "description": "Tele-led-32",
     "code": "tv-led-32-smart",
@@ -97,30 +89,28 @@
     "status": "true",
     "stock": "12",
     "thumbnails": "Sin-Imagen",
-    "category": "tv-audio-video"
+    "category": "Electronica"
   },
-  {
-    "id": "ed9f0a71-829c-425d-b0ba-ad0000edaf71",
-    "title": "Computadora",
+  {    
+    "title": "Computadora Portatil",
     "description": "32gb-ssd-intel",
     "code": "lenovo-black-led",
     "price": "123876",
     "status": "true",
     "stock": "9",
     "thumbnails": "Sin-Imagen",
-    "category": "Computadoras"
+    "category": "Electronica"
   },
-  {
-    "id": "9b06a2fb-b31e-40c4-80f9-1362eeb97ec8",
-    "title": "ProductPostman",
-    "description": "Producto de Prueba Postman",
-    "code": "ABantesden",
+  {    
+    "title": "Frezzer",
+    "description": "Frezzer-Nofrost",
+    "code": "frezesam-3456",
     "price": 23530,
     "status": true,
     "stock": 25,
     "thumbnails": [
       "Sin imagen"
     ],
-    "category": "Postman"
+    "category": "Linea Blanca"
   }
 ]

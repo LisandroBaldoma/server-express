@@ -4,6 +4,7 @@
   <table id="example" class="table table-sm table-hover table-bordered" style="width:100%">
 <div class="d-flex justify-content-center">
   <!-- Button trigger modal -->
+  
   <button
     type="button"
     class="btn btn-primary mb-3"
@@ -12,14 +13,21 @@
   >
     Add Product
   </button>
-  <a id="carritoCompra" href="http://">  
-  <button
-    type="button"
-    class="btn btn-success mb-3 mx-3"
-    id="cartPorduct"
-  >
-    Carrito de Compra
-  </button></a>
+    
+  
+  <div>
+    <input type="hidden" id="cartTesting" value="{{cartTesting}}">
+    <a id="carritoCompra" href="">
+      <button
+        type="button"
+        class="btn btn-success mb-3 mx-3"
+        id="cartPorduct"
+        >
+        Carrito de Compra
+      </button>
+    </a>
+  </div>
+  
   
 </div>
 <thead>
@@ -59,7 +67,18 @@
   {{/if}}
 </tbody>
 </table>
-  
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+    {{#if data.hasPrevPage}}
+    <li class="page-item"><a class="page-link" href="{{data.prevLink}}">Prev</a></li>
+    {{/if}}   
+    <li class="page-item"><a class="page-link" href=>Pagina {{data.page}} de {{data.totalPages}}</a></li>       
+    {{#if data.hasNextPage}}
+    <li class="page-item"><a class="page-link" href="{{data.nextLink}}">Next</a></li>
+    {{/if}}
+  </ul>
+  <p>Total de productos {{data.totalDocs}}</p>
+</nav>  
 </div>
 
 <!-- Modal Add Product -->
@@ -197,4 +216,4 @@
 </div>
 
 <script src="/socket.io/socket.io.js"></script>
-<script src="/static/js/productsListF.js"></script>
+<script src="/static/js/products.js"></script>
