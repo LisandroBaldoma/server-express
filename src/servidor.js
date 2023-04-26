@@ -7,6 +7,8 @@ import { engine } from 'express-handlebars'
 import  { Server as SocketIOServer } from 'socket.io'
 import IOSocket from './IOSocket.js'
 import { conectarMongooseDb } from "./database/mongoose.js"
+import session from "./middlewares/session.js"
+
 
 // Configuracion Server 
 const app = express();
@@ -28,6 +30,8 @@ app.set('view engine', 'handlebars');
 
 //Configuracion rutas del servidor
 app.use('/static', express.static('./static'))
+
+app.use(session)
 app.use('/', webRouters)
 app.use('/api', apiRouters)
 

@@ -3,6 +3,10 @@ import productModel from "./dao/Models/Product.mongoose.js";
 import fs from "fs/promises";
 import { conectarMongooseDb, desconectarMongoseDB } from "./database/mongoose.js";
 import cartModel from "./dao/Models/cart.Mongoose.js";
+import userModel from "./dao/Models/User.Mongoose.js";
+import { createSalt, encriptar } from "./utils/criptografia.js";
+
+
 
 //Leer productos para agregar a la BD
 const product = JSON.parse(
@@ -21,6 +25,17 @@ console.log("Se crearon los productos de testing con exito")
  const cartTesting = await cartModel.create(cart)
  console.log("Se creo el carrito de testing con exito")
 
+ // Creo Usuario para testing
+ 
+ const usuarioTesting = {
+  email: "adminCoder@coder.com",
+  password: "adminCoder3r123",
+  name: "UsuarioPrueba",
+  lastName:"Admin",
+  salt: createSalt()  
+ }
+await userModel.create({...usuarioTesting, password:encriptar(usuarioTesting.password, usuarioTesting.salt)})
+console.log("Se creo el Usuario de testing con exito")
 
 // Me desconecto de la BD
-await desconectarMongoseDB();
+await desconectarMongoseDB(usuarioTesting);

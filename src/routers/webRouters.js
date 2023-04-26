@@ -1,10 +1,14 @@
 import express, { Router } from "express";
 import { productsManager } from "../dao/mongoodb/product.manager.js";
 import { cartManager } from "../dao/mongoodb/cart.manager.js";
+import { auth } from "../middlewares/auth.js";
+import { loginView, profileView, registerView } from "../controllers/web/usersController.js";
+
 
 export const webRouters = Router();
 
-webRouters.get("/", (req, res, next) => {
+
+webRouters.get("/", auth, (req, res, next) => {
   try {
     res.render("home", {
       body: "Bienvenido a Backend NODE JS - EXPRESS - HANDLEBARS - SOCKET.IO",
@@ -15,15 +19,15 @@ webRouters.get("/", (req, res, next) => {
   }
 });
 
-webRouters.get("/register", (req, res, next) => {
-  try {
-    res.render("registerForm");
-  } catch (error) {
-    next(error);
-  }
-});
 
-webRouters.get("/products", async (req, res, next) => {
+webRouters.get("/register", registerView)
+
+webRouters.get("/profile", auth, profileView)
+
+webRouters.get("/login", loginView)
+
+
+webRouters.get("/products", auth, async (req, res, next) => {
   try {
     const respuesta = await productsManager.getProducts(req.query);
     const cartTesting = await cartManager.getCartTesting();
@@ -35,6 +39,7 @@ webRouters.get("/products", async (req, res, next) => {
         productsList: respuesta.payload,
         data: respuesta,
         cartTesting: cartTesting[0].id,
+        user:req.session['user'],
       });
     }
   } catch (error) {
@@ -42,7 +47,7 @@ webRouters.get("/products", async (req, res, next) => {
   }
 });
 
-webRouters.get("/carts/:cid", async (req, res, next) => {
+webRouters.get("/carts/:cid", auth, async (req, res, next) => {
   try {
     const respuesta = await cartManager.getCartById(req.params.cid);
     res.render("cartView", {
