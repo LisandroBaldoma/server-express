@@ -1,6 +1,49 @@
 ### Features
 
 - Servidor Backend E-commerce.
+
+### DESAFÍO ENTREGABLE 
+
+##Implementacion Login por formulario
+
+#  Instrucciones para el correcto funcionamiento
+
+#### Primer paso ( Descargar el proyecto e instalar dependencias )
+- Clonar Repositorio
+- npm install
+
+#### Segundo paso ( Cargar Productos y Carrito de Testing en la BD )
+- Setear el String de conexion a la BD el archivo se encuentra en la carpeta src/config/database.config.js
+- Se puede optar por 2 opciones:
+	MongoDB Compass
+	MongoDB Atlas
+
+- Acceder a la carpeta src
+- Ejecutar el archivo testingCrear.js "node testingCrear.js" (Este archivo va a cargar los productos y carritos y usuarios de prueba)
+- Ejecutar el servidor "npm test".
+
+#### Tercer paso ( Probar servidor )
+- DESAFÍO ENTREGABLE - PROCESO DE TESTING
+
+#### Cuarto paso ( Elimnar Productos y Caritos y usuarios de la BD )
+-  Una vez termiando con las pruebas puede eliminar los productos de la BD
+- Ejecutar el archivo testingEliminar.js "node testingEliminar.js".
+
+
+###EndPoint User-
+- http://localhost:8080/ (home) Vista protegida
+- http://localhost:8080/login 
+   - usuario registrados
+   - usuarios de prueba email: "adminCoder@coder.com", password: adminCoder3r123
+- http://localhost:8080/register (crear usuario - redirige a Login)
+- http://localhost:8080/profile (profile) Vista Protegida
+- http://localhost:8080/products Vista protegida
+
+
+
+------------
+
+
 - Segunda Entrega Proyecto Final.
 
 #  Instrucciones para el correcto funcionamiento

@@ -35,6 +35,8 @@ btn.addEventListener(
         .catch((error) => console.log(error));
 
       clearForm();
+      alert("Usuario registrado con exito, Redirigiendo a Login")
+      window.location.href = '/login'
     }
   },
   false
@@ -57,3 +59,4 @@ function clearForm() {
   password.value = "";
   form.classList.remove("was-validated");
 }
+
