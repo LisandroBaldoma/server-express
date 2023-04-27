@@ -17,8 +17,8 @@ console.log("Se Eliminaron los Productos de testing con exito")
 await cartModel.deleteMany({})
 console.log("Se Eliminaron los Cart de testing con exito")
 
-await userModel.deleteMany({})
-console.log("Se Eliminaron los Usuario de testing con exito")
+// await userModel.deleteMany({})
+// console.log("Se Eliminaron los Usuario de testing con exito")
 
 // Me desconecto de la BD
 await desconectarMongoseDB();

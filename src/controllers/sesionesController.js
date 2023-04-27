@@ -1,33 +1,28 @@
 import { userManager } from "../dao/mongoodb/user.manager.js";
-
+import { ValidarPassword } from "../utils/criptografia.js";
 
 export async function postSesiones(req, res, next) {
-  console.log(req.body);
-  const usuarioEncontrado = await userManager.getUserByEmail({ email: req.body.email })
-    
-  if (!usuarioEncontrado) {
-    return res.sendStatus(401);
+  //console.log(req.body);
+
+  const user = await userManager.getUserByEmail({
+    email: req.body.email,
+  });
+
+  if (!user) {
+    // return res.send({status:"error", error:"El usuario o contraseña son incorrectos"});
+    return res.send(401).send({status:"error", error:"El usuario o contraseña son incorrectos"})
   }
 
-  // validar contraseña hasheada
-
-  if(usuarioEncontrado.email === "adminCoder@coder.com"){
-    req.session.user = {
-      name: usuarioEncontrado.name,
-      lastName: usuarioEncontrado.lastName,
-      email: usuarioEncontrado.email,
-      role: "ADMIN"
-    }
-
-  }else{
-    req.session.user = {
-      name: usuarioEncontrado.name,
-      lastName: usuarioEncontrado.lastName,
-      email: usuarioEncontrado.email,
-      role: "USER"
-    }
+  if (!ValidarPassword(req.body.password, user.password)) {
+    // return res.send({status:"error", error:"El usuario o contraseña son incorrectos"});
+    return res.status(401).send({status:"error", error:"El usuario o contraseña son incorrectos"})
   }
-  res.status(201).json(req.session.user);
+
+  delete user.password
+  req.session.user = user;
+
+  return res.status(200).send({status:"Success", payload:user})
+  //res.status(201).json(req.session.user);
 }
 
 export async function deleteSessiones(req, res, next) {
