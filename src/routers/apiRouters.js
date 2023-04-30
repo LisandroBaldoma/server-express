@@ -1,10 +1,9 @@
 import express, { Router } from 'express'
-import { productsRouter } from "./productsRouter.js"
-import { cartRouter } from "./cartRouter.js";
-//import { webRouters } from './webRouters.js';
-import { userRouter } from './userRouter.js';
-import { sessionsRouter } from './sessionsRouter.js'
-import { soloLogueadosApi } from '../middlewares/soloLogueados.js';
+import { productsRouter } from "./api/productsRouter.js"
+import { cartRouter } from "./api/cartRouter.js";
+import { userRouter } from './api/userRouter.js';
+import { sessionsRouter } from './api/sessionsRouter.js'
+
 
 export const apiRouters = Router()
 

@@ -1,7 +1,7 @@
 import express, { Router } from "express"
 import { PORT } from "./config/servidor.config.js"
 import { apiRouters } from "./routers/apiRouters.js"
-import { webRouters } from "./routers/webRouters.js"
+import { webRouters } from "./routers/web/webRouters.js"
 import { IDNOTFOUND,CODEXIST,EMPTY } from './error/codError.js'
 import { engine } from 'express-handlebars'
 import  { Server as SocketIOServer } from 'socket.io'
@@ -9,9 +9,6 @@ import IOSocket from './IOSocket.js'
 import { conectarMongooseDb } from "./database/mongoose.js"
 import session from "./middlewares/session.js"
 import { passportInitialize, passportSession } from "./middlewares/passport.js"
-
-
-
 
 
 // Configuracion Server 

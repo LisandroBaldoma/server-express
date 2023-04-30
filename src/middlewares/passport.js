@@ -1,61 +1,85 @@
-import passport from 'passport'
-import { Strategy as LocalStrategy } from 'passport-local'
-import { ValidarPassword } from '../utils/criptografia.js'
-import { userManager } from '../dao/mongoodb/user.manager.js'
-import { ErrorDeAutenticacion } from '../dao/Models/errors/ErrorDeAutenticacion.js'
-import { Strategy as GithubStrategy } from 'passport-github2'
-import { JWT_PRIVATE_KEY, githubCallbackUrl, githubClientSecret, githubClienteId } from '../config/auth.config.js'
+import passport from "passport";
+import { Strategy as LocalStrategy } from "passport-local";
+import { ValidarPassword } from "../utils/criptografia.js";
+import { userManager } from "../dao/mongoodb/user.manager.js";
+import { ErrorDeAutenticacion } from "../dao/Models/errors/ErrorDeAutenticacion.js";
+import { Strategy as GithubStrategy } from "passport-github2";
+import {
+  JWT_PRIVATE_KEY,
+  githubCallbackUrl,
+  githubClientSecret,
+  githubClienteId,
+} from "../config/auth.config.js";
 
+passport.use(
+  "local",
+  new LocalStrategy(
+    { usernameField: "email" },
+    async (username, password, done) => {
+      //console.log(username, password);
 
+      const user = await userManager.getUserByEmail({ email: username });
+      //console.log("Este es el usuaario que tenria que encontrar", user);
+      if (!user) return done(new ErrorDeAutenticacion());
 
-passport.use('local', new LocalStrategy({ usernameField: 'email' }, async (username, password, done) => {
-    console.log(username, password)
-    
-        const user = await userManager.getUserByEmail({ email: username }); 
-        console.log("Este es el usuaario que tenria que encontrar", user)   
-        if (!user)
-        return done(new ErrorDeAutenticacion())    
-        
-        if (!ValidarPassword(password, user.password))         
-            return done(new ErrorDeAutenticacion())
-          
-        delete user.password
-        done(null, user)
-        
-    
-}))
+      if (!ValidarPassword(password, user.password))
+        return done(new ErrorDeAutenticacion());
 
-passport.use('github', new GithubStrategy({
-    clientID: githubClienteId,
-    clientSecret: githubClientSecret,
-    callbackURL: githubCallbackUrl
-}, async (accessToken, refreshToken, profile, done) => {
-    //console.log(profile)    
-    done(null, profile)
-}))
+      delete user.password;
+      done(null, user);
+    }
+  )
+);
+
+passport.use(
+  "github",
+  new GithubStrategy(
+    {
+      clientID: githubClienteId,
+      clientSecret: githubClientSecret,
+      callbackURL: githubCallbackUrl,
+    },
+    async (accessToken, refreshToken, profile, done) => {
+      //console.log(profile);
+      const user = {
+        name: profile.username,
+        profile: profile
+      };
+      done(null, user);
+    }
+  )
+);
 
 //TODO de acá saqué todo lo que tiene que ver con session! ---------------------------
 
 // esto lo tengo que agregar para que funcione passport! copiar y pegar, nada mas.
- passport.serializeUser((user, next) => { next(null, user) })
- passport.deserializeUser((user, next) => { next(null, user) })
+passport.serializeUser((user, next) => {
+  next(null, user);
+});
+passport.deserializeUser((user, next) => {
+  next(null, user);
+});
 
 // estos son para cargar en express como middlewares a nivel aplicacion
-export const passportInitialize = passport.initialize()
-export const passportSession = passport.session()
-
+export const passportInitialize = passport.initialize();
+export const passportSession = passport.session();
 
 // estos son para cargar como middlewares antes de los controladores correspondientes
-export const autenticacionUserPass = passport.authenticate('local', { failWithError: true })
-export const autenticacionPorGithub = passport.authenticate('github', { scope: ['user:email'] })
-export const antenticacionPorGithub_CB = passport.authenticate('github', { failWithError: true })
+export const autenticacionUserPass = passport.authenticate("local", {
+  failWithError: true,
+});
+export const autenticacionPorGithub = passport.authenticate("github", {
+  scope: ["user:email"],
+});
+export const antenticacionPorGithub_CB = passport.authenticate("github", {
+  failWithError: true,
+});
 
 //TODO hasta acá ----------------------------------------------------------------------
 
-
 //TODO agregado para jwt desde acá ---------------------------------------------------------
 
-// import { ExtractJwt, Strategy as JwtStrategy } from 'passport-jwt' 
+// import { ExtractJwt, Strategy as JwtStrategy } from 'passport-jwt'
 
 // passport.use('jwt', new JwtStrategy({
 //     jwtFromRequest: ExtractJwt.fromExtractors([function (req) {
@@ -73,7 +97,6 @@ export const antenticacionPorGithub_CB = passport.authenticate('github', { failW
 //         done(error)
 //     }
 // }))
-
 
 // export function autenticacionJwtApi(req, res, next) {
 //     passport.authenticate('jwt', (error, jwt_payload, info) => {

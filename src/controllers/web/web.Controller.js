@@ -3,21 +3,27 @@ import { productsManager } from "../../dao/mongoodb/product.manager.js";
 
 export function homeView(req, res, next) {
   res.render("home", {
-    body: "Bienvenido a Backend NODE JS - EXPRESS - HANDLEBARS - SOCKET.IO",
+    body: "Backend NODE JS - EXPRESS - LOGIN - PASSPORT",
     title: "E-commerce Backend",
+    user: req.user,
   });
 }
 
 export function loginView(req, res, next) {
-  res.render("login", { pageTitle: "Login" });
+  res.render("login", { title: "Login" });
 }
 
 export function registerView(req, res, next) {
-  res.render("registerForm", { pageTitle: "Register" });
+  res.render("registerForm", {
+    title: "Register",
+  });
 }
 
 export function profileView(req, res, next) {
-  res.render("profile", { pageTitle: "Profile", user: req.session["user"] });
+  res.render("profile", {
+    title: "Profile",
+    user: req.user,
+  });
 }
 
 export async function productsView(req, res, next) {
@@ -28,11 +34,12 @@ export async function productsView(req, res, next) {
       res.render("error");
     } else {
       res.render("products", {
+        title: "Prodcust",
         products: respuesta.payload.length > 0,
         productsList: respuesta.payload,
         data: respuesta,
         cartTesting: cartTesting[0].id,
-        user: req.session["user"],
+        user: req.user,
       });
     }
   } catch (error) {
@@ -40,10 +47,11 @@ export async function productsView(req, res, next) {
   }
 }
 
-export async function cartDetail(req, res, next) {
+export async function cartDetailView(req, res, next) {
   try {
     const respuesta = await cartManager.getCartById(req.params.cid);
     res.render("cartView", {
+      title: "CartDetail",
       cart: respuesta._id,
       products: respuesta.products.length > 0,
       productsList: respuesta.products,

@@ -1,5 +1,5 @@
-import productModel from "../dao/Models/Product.mongoose.js";
-import { productsManager } from "../dao/mongoodb/product.manager.js";
+import productModel from "../../dao/Models/Product.mongoose.js";
+import { productsManager } from "../../dao/mongoodb/product.manager.js";
 
 export async function create(req, res, next) {
   try {

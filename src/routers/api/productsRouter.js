@@ -8,7 +8,7 @@ import {
   getProductByID,
   updateProduct,
   deletedProduct,
-} from "../controllers/productsController.js";
+} from "../../controllers/api/productsController.js";
 
 export const productsRouter = Router();
 
