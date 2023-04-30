@@ -1,14 +1,21 @@
-<h1 class="text-center">Lista de productos</h1>
-
-<h2>Bienvenido {{user.name}}, {{user.lastName}}</h2>
+<div class="d-flex gap-4 p-3">
+<h2>Bienvenido: {{user.name}}, {{user.lastName}}</h2>
 <form id="formLogout2">
   <button class="btn btn-outline-danger"type="submit">Logout</button>
 </form>
+
 <a href="http://localhost:8080/profile">
 <button type="button" class="btn btn-outline-primary">Profile</button>
 </a>
 
+<a href="http://localhost:8080">
+<button type="button" class="btn btn-outline-secondary">Home</button>
+</a>
+</div>
 
+</div>
+
+<h1 class="text-center">Lista de productos</h1>
 
 <div class="container pt-5" id="tableContainer">
   <table id="example" class="table table-sm table-hover table-bordered" style="width:100%">

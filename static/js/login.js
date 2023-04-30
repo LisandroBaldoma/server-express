@@ -27,13 +27,13 @@ if (formLogin instanceof HTMLFormElement) {
         },
         body: JSON.stringify(datosUsuario)        
       })
-      console.log(respuesta)
+      //console.log(respuesta)
 
       if (respuesta.status === 201) {
         window.location.href = '/products'
       } else {
         alert("El usuario NO ESTA REGISTRADO EN LA BD")
-        console.log('[login] estado inesperado: ' + status)
+        //console.log('[login] estado inesperado: ' + respuesta.status)
       }
     }
   })

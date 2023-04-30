@@ -7,9 +7,9 @@ const password = document.getElementById("password");
 const email = document.getElementById("email");
 const form = document.querySelector(".needs-validation");
 
-btn.addEventListener(
-  "click",
-  (event) => {
+form.addEventListener(
+  "submit",
+  async (event) => {
     event.preventDefault();
     if (!form.checkValidity()) {
       event.preventDefault();
@@ -23,33 +23,39 @@ btn.addEventListener(
         email: email.value,
         password: password.value,
       };
-      fetch("http://localhost:8080/api/user", {
+      const response = await fetch("http://localhost:8080/api/user", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
-      })
-        .then((response) => response.json())
-        .then((response) => alertExito(response.respuesta))
-        .catch((error) => console.log(error));
+      });
 
-      clearForm();
-      alert("Usuario registrado con exito, Redirigiendo a Login")
-      window.location.href = '/login'
+      if (response.status === 201) {
+        clearForm();
+        alertExito()
+        //console.log(response);
+        //console.log("redireccionar");
+        window.location.href = "/products";
+      } else {
+        alert("El usuario NO ESTA REGISTRADO EN LA BD");
+        console.log("[login] estado inesperado: " + response.status);
+      }
     }
   },
   false
 );
 
-function alertExito(respuesta){
+function alertExito(respuesta) {
+  console.log(respuesta);
   Swal.fire({
-    position: 'top-end',
-    icon: 'success',
-    title: respuesta,
+    position: "top-end",
+    icon: "success",
+    title: "Usuario Registrado",
     showConfirmButton: false,
-    timer: 2000
-  })
+    timer: 3000,
+  });
 }
 
 function clearForm() {
@@ -59,4 +65,3 @@ function clearForm() {
   password.value = "";
   form.classList.remove("was-validated");
 }
-
