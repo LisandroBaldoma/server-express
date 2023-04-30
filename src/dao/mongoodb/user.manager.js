@@ -3,20 +3,12 @@ import { hashearPassword } from "../../utils/criptografia.js";
 import userModel from "../Models/User.Mongoose.js";
 
 class UserManager {
-  // async getUsers() {
-  //   const users = await userModel.find().lean();
-  //   if (users.length === 0) {
-  //     return users;
-  //   }
-  //   return users;
-  // }
-  // async getUserByID(id) {
-  //   const user = await userModel.findById(id).lean();
-  //   if (!user) {
-  //     throw new Error(IDNOTFOUND);
-  //   }
-  //   return user;
-  // }
+  
+  async getUserByID(id) {
+    const user = await userModel.findById(id).lean();    
+    return user;
+  }
+
   async getUserByEmail(email) {
     console.log(email);
     const user = await userModel.findOne(email).lean();
@@ -29,6 +21,11 @@ class UserManager {
       password: hashearPassword(user.password),
     });
     return newUser;
+  }
+
+  async getAllUsers(){
+    const users = await userModel.find().lean()
+    return users
   }
 
   async updtaePassword(body) {

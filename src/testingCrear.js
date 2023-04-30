@@ -27,4 +27,4 @@ console.log("Se crearon los productos de testing con exito")
 
 
 // Me desconecto de la BD
-await desconectarMongoseDB(usuarioTesting);
+await desconectarMongoseDB();

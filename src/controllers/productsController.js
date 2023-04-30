@@ -51,3 +51,4 @@ export async function deletedProduct(req, res, next) {
     next(error);
   }
 }
+

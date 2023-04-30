@@ -14,12 +14,12 @@ if (formLogin instanceof HTMLFormElement) {
       input_password instanceof HTMLInputElement
     ) {
 
-      const datosUsuario = {
+      const datosUsuario = {        
         email: input_email.value,
         password: input_password.value,
       }
 
-      const respuesta = await fetch('http://localhost:8080/api/user/login', {
+      const respuesta = await fetch('http://localhost:8080/api/sessions', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -29,7 +29,7 @@ if (formLogin instanceof HTMLFormElement) {
       })
       console.log(respuesta)
 
-      if (respuesta.status === 200) {
+      if (respuesta.status === 201) {
         window.location.href = '/products'
       } else {
         alert("El usuario NO ESTA REGISTRADO EN LA BD")

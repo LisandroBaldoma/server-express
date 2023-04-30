@@ -1,15 +1,13 @@
 import express, { Router } from "express"
-
-import * as sesionesController from "../controllers/sesionesController.js"
-import { registerUsuario } from "../controllers/usuariosController.js"
+import { getUserController, postUsersController } from "../controllers/api/users.Controller.js"
+import { soloLogueadosApi, soloLogueadosView } from "../middlewares/soloLogueados.js"
 
 export const userRouter = Router()
 
-userRouter.post('/', registerUsuario)
+userRouter.post('/', soloLogueadosApi, postUsersController) // METODO POST http://localhost:8080/api/user registro del usuario atravez de user.Controller
 
-userRouter.post('/login', sesionesController.postSesiones)
+userRouter.get('/', soloLogueadosView, getUserController) // METODO GET http://localhost:8080/api/user me traer todos los usuarios a travez de user.Controller
 
-userRouter.delete('/logout', sesionesController.deleteSessiones)
 
 
 

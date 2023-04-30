@@ -8,6 +8,10 @@ import  { Server as SocketIOServer } from 'socket.io'
 import IOSocket from './IOSocket.js'
 import { conectarMongooseDb } from "./database/mongoose.js"
 import session from "./middlewares/session.js"
+import { passportInitialize, passportSession } from "./middlewares/passport.js"
+
+
+
 
 
 // Configuracion Server 
@@ -31,7 +35,16 @@ app.set('view engine', 'handlebars');
 //Configuracion rutas del servidor
 app.use('/static', express.static('./static'))
 
+
+
 app.use(session)
+app.use(passportInitialize, passportSession)
+
+
+// Cargo Passport en el servior express como middlware
+//app.use(passportInitialize, passportSession)
+
+
 app.use('/', webRouters)
 app.use('/api', apiRouters)
 
