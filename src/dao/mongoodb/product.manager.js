@@ -1,11 +1,43 @@
-import mongoose from "mongoose";
+import { Schema, model } from "mongoose";
+import mongoosePaginate from 'mongoose-paginate-v2';
 
-import productModel from "../Models/Product.mongoose.js";
+const collection = "products";
+
+ const schemaProduct = new Schema(
+  {
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    stock: { type: Number, required: true },
+    price: { type: Number, required: true },
+    code: { type: String, required: true }, 
+    category: { type: String, required: true },
+    thumbnails: { type: Array, required: true },
+    status: { type: Boolean, required: true },
+  },
+  { versionKey: false }
+)
+
+schemaProduct.plugin(mongoosePaginate);
+
+const productModel = model(collection, schemaProduct);
 
 class ProductManager {
+  #product
+  constructor(){
+    this.#product = productModel
+  }
+
   async createProduct(product) {
-    const newProduct = await productModel.create(product);
+    const newProduct = await this.#product.create(product);
     return newProduct;
+  }
+
+  async insertarTesting(product){
+    const insertar = await this.#product.insertMany(product)
+    return insertar
+  }
+  async deletedProductsTesting(){
+    await this.#product.deleteMany({})
   }
 
   async getProducts(params) {
@@ -34,7 +66,7 @@ class ProductManager {
       hasNextPage,
       prevPage,
       nextPage,
-    } = await productModel.paginate(opcion, paginacion);
+    } = await this.#product.paginate(opcion, paginacion);
 
     const respuesta = {
       status: "Success",
@@ -60,24 +92,24 @@ class ProductManager {
   }
 
   async getProductByID(id) {
-    const product = await productModel.findById(id).lean();
+    const product = await this.#product.findById(id).lean();
     if (!product) {
-      throw new Error(IDNOTFOUND);
+      throw new Error();
     }
     return product;
   }
   async updateProduct(id, body) {
-    const prodUpdate = await productModel.findByIdAndUpdate(id, body);
+    const prodUpdate = await this.#product.findByIdAndUpdate(id, body);
     if (!prodUpdate) {
-      throw new Error(IDNOTFOUND);
+      throw new Error();
     }
     return prodUpdate;
   }
 
   async deletedProduct(id) {
-    const deleteProduct = await productModel.findByIdAndDelete(id);
+    const deleteProduct = await this.#product.findByIdAndDelete(id);
     if (!deleteProduct) {
-      throw new Error(IDNOTFOUND);
+      throw new Error();
     }
     return deleteProduct;
   }

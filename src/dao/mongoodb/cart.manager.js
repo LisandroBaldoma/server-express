@@ -1,49 +1,86 @@
-import cartModel from "../Models/cart.Mongoose.js";
-import productModel from "../Models/Product.mongoose.js";
+// import cartModel from "../Models/cart.Mongoose.js";
+import { Schema, model } from "mongoose";
+import { productsManager } from "./product.manager.js";
+
+const collection = "carts";
+
+export const schemaProduct = new Schema(
+  {
+    products: {
+      type: [
+        {
+          id: {
+            type: Schema.Types.ObjectId,
+            ref: "products",
+            required: true,
+          },
+          quantity: { type: Number, required: true },
+        },
+      ],
+    },
+  },
+  { versionKey: false }
+);
+
+const cartModel = model(collection, schemaProduct);
 
 class CartManager {
+  #cart;
+  constructor() {
+    this.#cart = cartModel;
+  }
+
   async createCart(cart) {
-    const newCart = await cartModel.create(cart);
+    const newCart = await this.#cart.create(cart);
     return newCart;
   }
-  async getCartById(cid) {
+  async getCartById(cid) {    
     // POPULATION
-    const cart = await cartModel.findById(cid).populate("products.id").lean();
+    const cart = await this.#cart.findById(cid).populate("products.id").lean();
     return cart;
   }
   async getCartTesting() {
-    const cartTesting = await cartModel.find({});
+    const cartTesting = await this.#cart.find({});
     return cartTesting;
+  }
+  async deletedCartTesting(){
+    await this.#cart.deleteMany({})
   }
 
   async addProductCart(cid, pid) {
-    const cart = await cartModel.findById(cid);
-    const prod = await productModel.findById(pid);
+    const cart = await this.#cart.findById(cid);
+    const prod = await productsManager.getProductByID(pid);  
 
-    const index = cart.products.findIndex((product) => product.id == prod.id);
+    const index = cart.products.findIndex((product) => product.id == pid);
 
     if (index !== -1) {
       cart.products[index].quantity = cart.products[index].quantity + 1;
       cart.save();
       return cart.products[index];
     } else {
-      cart.products.push({ id: prod.id, quantity: 1 });
+      cart.products.push({ id: pid, quantity: 1 });
       cart.save();
       return cart.products;
     }
   }
 
   async deleteAllProductCart(cid) {
-    const cart = await cartModel.findById(cid);
+    const cart = await this.#cart.findById(cid);
+
+    if (!cart) {
+      throw new Error();
+    }
+
     cart.products = [];
     cart.save();
     return cart;
   }
   async deleteProductCart(cid, pid) {
-    const cart = await cartModel.findById(cid);
-    const prod = await productModel.findById(pid);
+    //console.log(cid, pid);
+    const cart = await this.#cart.findById(cid);
+    const prod = await productsManager.getProductByID(pid);    
 
-    const index = cart.products.findIndex((product) => product.id == prod.id);
+    const index = cart.products.findIndex((product) => product.id == pid);
     if (index !== -1) {
       cart.products.splice(index, 1);
       cart.save();
@@ -54,7 +91,8 @@ class CartManager {
   }
 
   async updateProductsCart(body, cid) {
-    const cart = await cartModel.findById(cid);
+    const cart = await this.#cart.findById(cid); 
+    
     cart.products = [];
     body.forEach((element) => {
       cart.products.push(element);
@@ -63,10 +101,10 @@ class CartManager {
   }
 
   async updateQuantiyProductsCart(pid, cid, body) {
-    const cart = await cartModel.findById(cid);
-    const prod = await productModel.findById(pid);
+    const cart = await this.#cart.findById(cid);
+    const prod = await productsManager.getProductByID(pid);   
 
-    const index = cart.products.findIndex((product) => product.id == prod.id);
+    const index = cart.products.findIndex((product) => product.id == pid);
     if (index !== -1) {
       cart.products[index].quantity = body.quantity;
       cart.save();
@@ -77,4 +115,3 @@ class CartManager {
   }
 }
 export const cartManager = new CartManager();
-

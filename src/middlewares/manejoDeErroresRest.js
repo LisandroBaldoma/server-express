@@ -6,6 +6,9 @@ export function manejoDeErrores(error, req, res, next) {
         case 'ERROR_DE_PERMISOS':
             res.status(403)
             break
+        case 'ERROR_NOT_FOUND':
+            res.status(404)
+            break
         default:
             res.status(500)
     }
