@@ -7,7 +7,10 @@
 ## Segunda practica integradora
 
 - Se Actualizo el modelo de User con los campos requeridos y al momento de registrarse exitosamente se asigna un carrito unico para ese usuario.
-- Se implemento la ruta http://localhost:8080/api/sessions/current donde se muestra solo un JSON con todos los datos del usuario en sesion local
+- Se implemento la ruta http://localhost:8080/api/sessions/current donde se muestra solo un JSON con todos los datos del usuario en sesion local.
+- En la vista http://localhost:8080/Products si estas correctamente logeado de forma local podes agregar productos al carrtio que tiene asignado ese usuario. 
+- En la ruta GET http://localhost:8080/api/user/:id podes consultar por id de usuario y devuelve todos los datos del usuario y del carrito que tiene asignado con los productos agregados (solo muestra el JSON).
+
 
 
 #  Instrucciones para el correcto funcionamiento

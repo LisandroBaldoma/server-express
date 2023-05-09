@@ -5,6 +5,9 @@ const buttonAddCart = document.getElementsByClassName("btnAddCart");
 const linKCarritoCompra = document.querySelector("#carritoCompra");
 const cartTestingId = document.querySelector("#cartTesting");
 const myModal = new bootstrap.Modal(document.getElementById("exampleModal"));
+const cartUser = document.querySelector("#cartUser");
+
+console.log(cartUser);
 
 if (formAddProduct instanceof HTMLFormElement) {
   formAddProduct.addEventListener("submit", (event) => {
@@ -29,7 +32,7 @@ if (buttonAddCart) {
   for (let btn of buttonAddCart) {
     btn.addEventListener("click", () => {
       fetch(
-        `http://localhost:8080/api/carts/${cartTestingId.value}/product/${btn.id}`,
+        `http://localhost:8080/api/carts/${cartUser.value}/product/${btn.id}`,
         {
           method: "POST",
           headers: {
@@ -39,14 +42,14 @@ if (buttonAddCart) {
       )
         .then((response) =>
           alert(
-            `El producto: ${btn.id}, se agrego con exito en el carrito de Testing ${cartTestingId.value}`
+            `El producto: ${btn.id}, se agrego con exito en el carrito de Testing ${cartUser.value}`
           )
         )
         .catch((error) => console.log(error));
     });
   }
 }
-linKCarritoCompra.href = `http://localhost:8080/carts/${cartTestingId.value}`;
+linKCarritoCompra.href = `http://localhost:8080/carts/${cartUser.value}`;
 
 
 const formLogout = document.querySelector('#formLogout2')

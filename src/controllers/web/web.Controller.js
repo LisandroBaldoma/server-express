@@ -27,6 +27,8 @@ export function profileView(req, res, next) {
 }
 
 export async function productsView(req, res, next) {
+  console.log(req.query)
+  console.log(req.user)
   try {
     const respuesta = await productsManager.getProducts(req.query);
     const cartTesting = await cartManager.getCartTesting();
