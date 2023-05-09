@@ -4,7 +4,11 @@
 
 ### DESAFÍO ENTREGABLE 
 
-##Implementacion login-local, login-github, passport Strategy, bcrypt
+## Segunda practica integradora
+
+- Se Actualizo el modelo de User con los campos requeridos y al momento de registrarse exitosamente se asigna un carrito unico para ese usuario.
+- Se implemento la ruta http://localhost:8080/api/sessions/current donde se muestra solo un JSON con todos los datos del usuario en sesion local
+
 
 #  Instrucciones para el correcto funcionamiento
 

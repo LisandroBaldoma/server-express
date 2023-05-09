@@ -26,6 +26,7 @@ passport.use(
         return done(new ErrorDeAutenticacion());
 
       delete user.password;
+      console.log(user)
       done(null, user);
     }
   )
@@ -40,7 +41,7 @@ passport.use(
       callbackURL: githubCallbackUrl,
     },
     async (accessToken, refreshToken, profile, done) => {
-      //console.log(profile);
+      console.log(profile);
       const user = {
         name: profile.username,
         profile: profile
