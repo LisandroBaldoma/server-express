@@ -2,40 +2,34 @@
 
 - Servidor Backend E-commerce.
 
-### DESAFÍO ENTREGABLE 
+## DESAFÍO ENTREGABLE 
+###RESTRUCTURACION DEL SERVIDOR
 
-## Segunda practica integradora
+### Segunda practica integradora
 
-- Se Actualizo el modelo de User con los campos requeridos y al momento de registrarse exitosamente se asigna un carrito unico para ese usuario.
-- Se implemento la ruta http://localhost:8080/api/sessions/current donde se muestra solo un JSON con todos los datos del usuario en sesion local.
-- En la vista http://localhost:8080/Products si estas correctamente logeado de forma local podes agregar productos al carrtio que tiene asignado ese usuario. 
-- En la ruta GET http://localhost:8080/api/user/:id podes consultar por id de usuario y devuelve todos los datos del usuario y del carrito que tiene asignado con los productos agregados (solo muestra el JSON).
-
+- Implemente  Repositories con las operaciones que se realizan en products -carts - Users para que todas las operaciones puedan  ser independientes de la persistencia que se elije al iniciar el programa.
+- Implemente Services con operaciones de creacion que se realizan en prodcuts - carts - users.
+- El modo Memoria solo podra usarse con Postman 
+- implemente DOTENV para configurar las variables de entorno que se necesitan para el funcionamiento del servidor.
+	En los archivos .env corrspondientes a cada persistencia se debera completar con los datos requeridos 
+	PORT (puerto en el que escuchara el serivdor )
+	MOONGODB_CONECTION_STRING (String de conexion para Mongodb)
 
 
 #  Instrucciones para el correcto funcionamiento
 
-#### Primer paso ( Descargar el proyecto e instalar dependencias )
+### Primer paso ( Descargar el proyecto e instalar dependencias )
 - Clonar Repositorio
 - npm install
 
-#### Segundo paso ( Cargar Productos y Carrito de Testing en la BD )
-- Setear el String de conexion a la BD el archivo se encuentra en la carpeta src/config/database.config.js
-- Se puede optar por 2 opciones:
-	MongoDB Compass
-	MongoDB Atlas
+## Segundo paso ( ejecutar el comando npm para iniciar el servidor )
+##se puede elegir entre 3 opciones de persistencia
+		npm test ( por defecto utiliza Mongodb local)
+		npm test memoria (solo para test con Postman)
+		npm atlas (utiliza monogoAtlas)
 
-- Acceder a la carpeta src
-- Ejecutar el archivo testingCrear.js "node testingCrear.js" (Este archivo va a cargar los productos y carritos)
-- Ejecutar el servidor "npm test".
-
-#### Tercer paso ( Probar servidor )
+### Tercer paso ( Probar servidor )
 - DESAFÍO ENTREGABLE - PROCESO DE TESTING
-
-#### Cuarto paso ( Eliminar Productos  Carritos y usuarios de la BD )
--  Una vez termiando con las pruebas puede eliminar los productos de la BD
-- Ejecutar el archivo testingEliminar.js "node testingEliminar.js".
-
 
 ###EndPoint User-
 - http://localhost:8080 (home) Vista protegida
@@ -47,17 +41,9 @@
 - http://localhost:8080/products (Lista de productos) Vista protegida
 - http://localhost:8080/api/sessions/current (Datos session) Vista Protegida 
 
-------------
-
-**Table of Contents**
-
-[TOCM]
-
-[TOC]
-
 ###EndPoint Products
 
-GET Products
+		GET Products
 http://localhost:8080/api/products **(implemente Paginate-V2)**
 - acepta parametros opcioneales de busqueda:
 	- limit: numerico
@@ -74,7 +60,7 @@ PUT UpdateProduct
 DEL DeleteProduct
 - http://localhost:8080/api/products/:id
 
-# EndPoint Carts
+### EndPoint Carts
 POST AddCart
 - http://localhost:8080/api/carts/
 POST AddProductToCart
@@ -90,7 +76,7 @@ PUT UpdateProductsCart
 PUT UpdateQuantityCartProduct 
 - http://localhost:8080/api/carts/:cid/product/:pid
 
-# View 
+### View 
 
 - http://localhost:8080/
 	 Esta vista en solo el HOME del proyecto. 
@@ -99,14 +85,14 @@ PUT UpdateQuantityCartProduct
 	En esta vista Se puede 
 
 - Agregar Productos nuevos AddProduct
-- Agregar productos al carrito que por defecto utiliza el que se creo anteriormente en el "Segundo paso"
+- Agregar productos al carrito que se le asigno al usuario al registrarse
 - Se puede acceder al carrito de compras con el detalle de los productos que se agregaron al carrito
 - Cuenta con Paginacion 
 
 - http://localhost:8080/carts/:cid
 	En esta vista se puede acceder al detalle de cualquier carrito que quiera consultar 
 
-# Testing ( Coleccion Postman para realizar los testing a todos los EndPoint )
+### Testing ( Coleccion Postman para realizar los testing a todos los EndPoint )
 - En la carpeta src/test/postman/E-commerce Backend Server.postman_collection.js
 - Podes importar la coleccion en POSTMAN y realizar los TEST a los endPoint
 

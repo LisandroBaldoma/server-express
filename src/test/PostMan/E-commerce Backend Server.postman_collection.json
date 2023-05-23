@@ -424,6 +424,328 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "getAllUser",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "baldomalisandro@hotmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456789",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "baldomalisandro@hotmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456789",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/user/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "645861cf5a59521d1899b5ea"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UserRegister",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Lisandro Postman",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "Baldoma Ppostman",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "postman@hotmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "admin1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UserLoginLocal",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Lisandro Postman",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "Baldoma Ppostman",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "postman@hotmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "admin1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/sessions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"sessions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UserLoginGithub",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Lisandro Postman",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "Baldoma Ppostman",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "postman@hotmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "admin1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/github",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"github"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UserLogout",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Lisandro Postman",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "Baldoma Ppostman",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "postman@hotmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "admin1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/github",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"github"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SessionsCurrent",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Lisandro Postman",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "Baldoma Ppostman",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "postman@hotmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "admin1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/github",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"github"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
