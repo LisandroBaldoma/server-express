@@ -1,59 +1,47 @@
-import { Product } from "../../dao/Models/Product.js";
+//import { productsManager } from "../../dao/mongoodb/product.manager.js";
+import { productsRepository } from "../../repositories/product.respository.js";
+import { productService } from "../../services/products.service.js";
 
-import { ErrorNotFoundProducts } from "../../dao/Models/errors/ErrorNotFound.js";
-
-import { productsManager } from "../../dao/mongoodb/product.manager.js";
-
-export async function create(req, res, next) {
+export async function handlePost(req, res, next) {
   try {
-    const product = new Product(req.body);
-    const result = await productsManager.createProduct(product.datosProduct());
-    res.json(result);
+    const result = await productService.crearProduct(req.body);
+    res.json({ status: "Producto Creado", payload: result });
   } catch (error) {
-    next(new ErrorNotFoundProducts())
+    next(error);
   }
 }
 
-export async function getProduct(req, res, next) {  
+export async function handleGet(req, res, next) {
   try {
-    //console.log(req.query)
-    const result = await productsManager.getProducts(req.query);
-    res.json(result);
+    if (req.params.id) {
+      const result = await productsRepository.getProductByID(req.params.id);
+      res.json(result);
+    } else {
+      const result = await productsRepository.getProducts(req.query);
+      res.json(result);
+    }
   } catch (error) {
-    next(new ErrorNotFoundProducts())
-    // next(error);
+    next(error);
   }
 }
 
-export async function getProductByID(req, res, next) {
-  //console.log(req.query.id)
+export async function handlePut(req, res, next) {
   try {
-    const result = await productsManager.getProductByID(req.params.id);
-    res.json(result);
-  } catch (error) {
-    next(new ErrorNotFoundProducts())
-    // next(error);
-  }
-}
-
-export async function updateProduct(req, res, next) {
-  try {
-    const productUpdate = await productsManager.updateProduct(
+    const productUpdate = await productsRepository.updateProduct(
       req.params.id,
       req.body
     );
-    res.json(productUpdate);
+    res.json({ status: "Update", payload: productUpdate });
   } catch (error) {
-    next(new ErrorNotFoundProducts())
+    next(error);
   }
 }
 
-export async function deletedProduct(req, res, next) {
+export async function handleDelete(req, res, next) {
   try {
-    const deleteProduct = await productsManager.deletedProduct(req.params.id);
+    const deleteProduct = await productsRepository.deletedProduct(req.params.id);
     res.json({ status: "deleted", payload: deleteProduct });
   } catch (error) {
-    next(new ErrorNotFoundProducts())
+    next(error);
   }
 }
-

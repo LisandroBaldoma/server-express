@@ -1,22 +1,10 @@
-import { User } from "../../dao/Models/User.js";
 import { ErrorDeAutenticacion } from "../../dao/Models/errors/ErrorDeAutenticacion.js";
-import { cartManager } from "../../dao/mongoodb/cart.manager.js";
-import { userManager } from "../../dao/mongoodb/user.manager.js";
-import { hashearPassword } from "../../utils/criptografia.js";
-import { Cart } from "../../dao/Models/Cart.js"
+import { userRepository } from "../../repositories/user.repository.js";
+import { usersService } from "../../services/users.service.js";
 
-export async function postUsersController(req, res, next) {
+export async function handlePost(req, res, next) {
   try {
-    const datosNewUser = req.body
-    datosNewUser.password = hashearPassword(datosNewUser.password)
-    const newCart = new Cart();
-    const cartUser = await cartManager.createCart(newCart);
-    
-    datosNewUser.cart = cartUser.id    
-    
-    const newUser = new User(datosNewUser)
-    const user = await userManager.createUser(newUser.datosUser());
-
+    const user = await usersService.registerUser(req.body);
     // funcion de passport para que el registro ya me deje logueado tambien!
     req.login(user, (error) => {
       if (error) {
@@ -30,15 +18,12 @@ export async function postUsersController(req, res, next) {
   }
 }
 
-export async function getUserController(req, res, next) {
-  const users = await userManager.getAllUsers();
-  res.json(users);
+export async function handleGet(req, res, next) {
+  if (req.params.id) {
+    const user = await userRepository.getUserByID(req.params.id);
+    res.json(user);
+  } else {
+    const users = await userRepository.getAllUsers();
+    res.json(users);
+  }
 }
-
-export async function getUserById(req, res, next) {
-  //console.log(req.params.id)
-  const user = await userManager.getUserByID(req.params.id)
-  res.json(user)
-}
-
-

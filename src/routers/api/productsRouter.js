@@ -1,25 +1,18 @@
 import express, { Router } from "express";
-//import { ProductManager } from "../dao/fileSystem/ProductManager.js";
 
-//import { productsController } from "../controllers/productsController.js";
 import {
-  create,
-  getProduct,
-  getProductByID,
-  updateProduct,
-  deletedProduct,
+  handlePost,
+  handleGet,  
+  handlePut,
+  handleDelete,
 } from "../../controllers/api/productsController.js";
 
 export const productsRouter = Router();
 
-//const pm = new ProductManager("./database/products.json");
+productsRouter.get("/:id?", handleGet);
 
-productsRouter.get("/", getProduct);
+productsRouter.post("/", handlePost);
 
-productsRouter.get("/:id", getProductByID);
+productsRouter.put("/:id", handlePut);
 
-productsRouter.post("/", create);
-
-productsRouter.put("/:id", updateProduct);
-
-productsRouter.delete("/:id", deletedProduct);
+productsRouter.delete("/:id", handleDelete);

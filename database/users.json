@@ -19,5 +19,19 @@
     "email": "dasdsa@dasdasd.com",
     "password": "a36e4663caa4389fa44e0f1ab80026a4aed960fb747062909c11c27f60df69c9",
     "salt": "aobeLwXpN+Vuq2/mOEDnelEGdhDWs+/E4XGr0PUzRYGvxUa4erBrg5Hnt7WxPFRhurxiLuZkXRl+ydUiajVPhrbJkCnLhBbqZo1CqHiCRY/p57VuXyZ7XZiQ9jCpoC7SQeuD+K96q0xawxIXNd/rxP29nT5jbtdmaQHbg4v79F0="
+  },
+  {
+    "name": "Lisandro Postman2",
+    "lastName": "Baldoma Ppostman2",
+    "email": "postman@hotmail.com2",
+    "cart": "67518e42-2341-48c1-8a6f-a0f3269d0c8b",
+    "password": "5e6c5da9df0ee1f6e38b65e1b0952298d1d407bc986e158c79b028aff42b47da"
+  },
+  {
+    "name": "xxasxs",
+    "lastName": "Baldoma",
+    "email": "bgf.arquitectura@gmail.com",
+    "cart": "8b328268-902e-4188-b9d4-562647041a0e",
+    "password": "7702feea33f82587a7b63acb3552ba2d64da0236fdd248e55c746f3caca1fced"
   }
 ]

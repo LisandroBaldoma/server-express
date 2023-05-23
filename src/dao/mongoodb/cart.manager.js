@@ -26,7 +26,7 @@ const cartModel = model(collection, schemaProduct);
 
 class CartManager {
   #cart;
-  constructor() {
+  constructor(cartModel) {
     this.#cart = cartModel;
   }
 
@@ -34,22 +34,14 @@ class CartManager {
     const newCart = await this.#cart.create(cart);
     return newCart;
   }
-  async getCartById(cid) {    
+  async getCartById(cid) {
     // POPULATION
     const cart = await this.#cart.findById(cid).populate("products.id").lean();
     return cart;
-  }
-  async getCartTesting() {
-    const cartTesting = await this.#cart.find({});
-    return cartTesting;
-  }
-  async deletedCartTesting(){
-    await this.#cart.deleteMany({})
-  }
-
+  }  
   async addProductCart(cid, pid) {
     const cart = await this.#cart.findById(cid);
-    const prod = await productsManager.getProductByID(pid);  
+    const prod = await productsManager.getProductByID(pid);
 
     const index = cart.products.findIndex((product) => product.id == pid);
 
@@ -63,13 +55,8 @@ class CartManager {
       return cart.products;
     }
   }
-
   async deleteAllProductCart(cid) {
     const cart = await this.#cart.findById(cid);
-
-    if (!cart) {
-      throw new Error();
-    }
 
     cart.products = [];
     cart.save();
@@ -78,7 +65,7 @@ class CartManager {
   async deleteProductCart(cid, pid) {
     //console.log(cid, pid);
     const cart = await this.#cart.findById(cid);
-    const prod = await productsManager.getProductByID(pid);    
+    const prod = await productsManager.getProductByID(pid);
 
     const index = cart.products.findIndex((product) => product.id == pid);
     if (index !== -1) {
@@ -89,20 +76,18 @@ class CartManager {
       throw new Error("El producto no existe en el carrito");
     }
   }
-
   async updateProductsCart(body, cid) {
-    const cart = await this.#cart.findById(cid); 
-    
+    const cart = await this.#cart.findById(cid);
+
     cart.products = [];
     body.forEach((element) => {
       cart.products.push(element);
     });
     cart.save();
   }
-
   async updateQuantiyProductsCart(pid, cid, body) {
     const cart = await this.#cart.findById(cid);
-    const prod = await productsManager.getProductByID(pid);   
+    const prod = await productsManager.getProductByID(pid);
 
     const index = cart.products.findIndex((product) => product.id == pid);
     if (index !== -1) {
@@ -113,5 +98,12 @@ class CartManager {
       throw new Error("El producto no existe en el carrito");
     }
   }
+  async getCartTesting() {
+    const cartTesting = await this.#cart.find({});
+    return cartTesting;
+  }
+  async deletedCartTesting() {
+    await this.#cart.deleteMany({});
+  }
 }
-export const cartManager = new CartManager();
+export const cartManager = new CartManager(cartModel);

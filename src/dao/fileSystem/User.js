@@ -1,10 +1,12 @@
 export class User {
-    constructor({ name, lastName, email, password, salt }){
+    constructor({ name, lastName, email, age, cart, password, rol }){
         this.name = name,
         this.lastName = lastName,
         this.email = email,
+        this.age = age,
+        this.cart = cart
         this.password = password,
-        this.salt = salt
+        this.rol = rol
     }
 }
 

@@ -1,7 +1,7 @@
-import { conectarMongooseDb, desconectarMongoseDB } from "./database/mongoose.js";
-import { productsManager } from "./dao/mongoodb/product.manager.js";
-import { cartManager } from "./dao/mongoodb/cart.manager.js";
-import { userManager } from "./dao/mongoodb/user.manager.js";
+import { conectarMongooseDb, desconectarMongoseDB } from "../database/mongoose.js";
+import { productsManager } from "../dao/mongoodb/product.manager.js";
+import { cartManager } from "../dao/mongoodb/cart.manager.js";
+import { userManager } from "../dao/mongoodb/user.manager.js";
 
 
 // Conectarme a la BD

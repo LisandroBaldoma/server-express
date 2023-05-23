@@ -1,9 +1,9 @@
 import { Product } from "./Product.js";
 import fs from "fs/promises";
 import { randomUUID } from "crypto";
-import { IDNOTFOUND,CODEXIST,EMPTY } from '../../error/codError.js'
 
-export class ProductManager {
+
+class ProductManagerFS {
   #ruta;
   #products;
   constructor(ruta) {
@@ -18,6 +18,7 @@ export class ProductManager {
     await fs.writeFile(this.#ruta, json);
   }
   async getProducts() {
+    console.log("getproducts fs")
     await this.#readProducts();
     if (this.#products.length === 0) {
       return this.#products
@@ -49,7 +50,7 @@ export class ProductManager {
     });
     const product = this.#products.find((prod) => prod.code === newProduct.code);
     if (product) {
-      throw new Error(CODEXIST);
+      throw new Error("ID no existe");
     }
     this.#products.push(newProduct);
     await this.#writeProduct();
@@ -59,7 +60,7 @@ export class ProductManager {
     await this.#readProducts();
     const product = this.#products.find((prod) => prod.id === id);
     if (!product) {
-      throw new Error(IDNOTFOUND);
+      throw new Error("ID no existe");
     }
     return product;
   }
@@ -70,7 +71,7 @@ export class ProductManager {
     await this.#readProducts();
     const index = this.#products.findIndex((prod) => prod.id === id);
     if (index === -1) {
-      throw new Error(IDNOTFOUND);
+      throw new Error("ID no existe");
     } else {
       const newProductUpdate = { ...this.#products[index], ...CamposUpdate };
       this.#products.splice(index, 1, newProductUpdate);
@@ -82,7 +83,7 @@ export class ProductManager {
     await this.#readProducts();
     const index = this.#products.findIndex((prod) => prod.id === id);
     if (index === -1) {
-      throw new Error(IDNOTFOUND);
+      throw new Error("ID no existe");
     } else {
       this.#products.splice(index, 1);
       this.#writeProduct();
@@ -90,3 +91,5 @@ export class ProductManager {
     }
   }
 }
+
+export const productsManagerFS = new ProductManagerFS('./database/products.json');

@@ -2,7 +2,7 @@ import { User } from "./User.js";
 import { encriptar, createSalt } from "../../utils/criptografia.js";
 import fs from "fs/promises";
 
-export class UserManager {
+export class UserManagerFS {
   #users
   #ruta
   constructor(ruta) {
@@ -17,15 +17,17 @@ export class UserManager {
     const json = JSON.stringify(this.#users, null, 2)    
     await fs.writeFile(this.#ruta, json);
   }
-  async createUser({ name, lastName, email, password}) {
+  async createUser({ name, lastName, email, age, cart, password, rol}) {
     await this.#read()
     const salt = createSalt()    
     const user = new User({
       name,
       lastName,
       email,
-      salt: salt,
-      password: encriptar(password, salt),
+      age,
+      cart,
+      password: encriptar(password, createSalt()),
+      rol
       
     });
     this.#users.push(user);
@@ -44,6 +46,16 @@ export class UserManager {
     }
 
   }
+  getUserByID(id) {
+    console.log("la funcion no esta disponible para trabaja en memoria")
+  }
+  getUserByEmail(email) {
+    console.log("la funcion no esta disponible para trabaja en memoria")
+  }
+  getAllUsers() {
+    console.log("la funcion no esta disponible para trabaja en memoria")
+  }
 }
 
-// TODO TERMINAR DE CREAR EL USEER NANAGGER CON TODOS SUS METODOS PARA PODER EDITAR ELIMINAR BUSCAR TDOS Y CADA USUARIO BY ID
+export const userMangerFS = new UserManagerFS('./database/users.json')
+ 

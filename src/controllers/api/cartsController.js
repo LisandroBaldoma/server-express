@@ -1,82 +1,78 @@
-import { Cart } from "../../dao/Models/Cart.js";
-import { ErrorNotFoundCarts } from "../../dao/Models/errors/ErrorNotFound.js";
-import { cartManager } from "../../dao/mongoodb/cart.manager.js";
-//import { productsManager } from "../../dao/mongoodb/product.manager.js";
+import { cartRpository } from "../../repositories/cart.repository.js";
+import { cartService } from "../../services/carts.service.js";
 
-export async function create(req, res, next) {
+export async function handlePost(req, res, next) {
   try {
-    const newCart = new Cart();
-    const result = await cartManager.createCart(newCart);
+    const result = await cartService.createCarts();
     res.send({ status: "succes", payload: result });
   } catch (error) {
-    next(new ErrorNotFoundCarts())
-    
+    next(error);
   }
 }
 
-export async function getCartById(req, res, next) {
+export async function handlePostAdd(req, res, next) {
   try {
-    const result = await cartManager.getCartById(req.params.cid);    
-    res.json(result);
-  } catch (error) {
-    next(new ErrorNotFoundCarts())
-  }
-}
-
-export async function addProductCart(req, res, next) {  
-  try {   
-    const result = await cartManager.addProductCart(
-      req.params.cid,
-      req.params.pid
-    );
-    res.json(result);
-  } catch (error) {    
-    next(new ErrorNotFoundCarts())
-  }
-}
-
-export async function deleteAllProductCart(req, res, next) {
-  try {
-    const result = await cartManager.deleteAllProductCart(req.params.cid);
-    res.json(result);
-  } catch (error) {
-    next(new ErrorNotFoundCarts())
-  }
-}
-
-export async function deleteProductCart(req, res, next) {
-  try {
-    const result = await cartManager.deleteProductCart(
+    const result = await cartRpository.addProductCart(
       req.params.cid,
       req.params.pid
     );
     res.json(result);
   } catch (error) {
-    next(new ErrorNotFoundCarts())
+    next(error);
   }
 }
 
-export async function updateProductsCart(req, res, next) {
+export async function handleGet(req, res, next) {
   try {
-    const result = await cartManager.updateProductsCart(
+    const result = await cartRpository.getCartById(req.params.cid);
+    res.json(result);
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function handleDeleteAll(req, res, next) {
+  try {
+    const result = await cartRpository.deleteAllProductCart(req.params.cid);
+    res.json(result);
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function handleDeleteOne(req, res, next) {
+  try {
+    const result = await cartRpository.deleteProductCart(
+      req.params.cid,
+      req.params.pid
+    );
+    res.json(result);
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function handleUpdateOne(req, res, next) {
+  try {
+    const result = await cartRpository.updateProductsCart(
       req.body,
       req.params.cid
     );
     res.json(result);
   } catch (error) {
-    next(new ErrorNotFoundCarts())
+    next(error);
   }
 }
 
-export async function updateQuantiyCartProduct(req, res, next) {  
+export async function HandleUpdateQuantiy(req, res, next) {
   try {
-    const result = await cartManager.updateQuantiyProductsCart(
+    const result = await cartRpository.updateQuantiyProductsCart(
       req.params.pid,
       req.params.cid,
       req.body
     );
     res.json(result);
   } catch (error) {
-    next(new ErrorNotFoundCarts())
+    next(error);
   }
 }

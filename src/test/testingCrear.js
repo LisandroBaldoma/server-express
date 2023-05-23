@@ -1,14 +1,14 @@
 import mongoose from "mongoose";
 
 import fs from "fs/promises";
-import { conectarMongooseDb, desconectarMongoseDB } from "./database/mongoose.js";
+import { conectarMongooseDb, desconectarMongoseDB } from "../database/mongoose.js";
 // import cartModel from "./dao/Models/cart.Mongoose.js";
 // import userModel from "./dao/Models/User.Mongoose.js";
 // import { createSalt, encriptar } from "./utils/criptografia.js";
 // import { Product } from "./dao/Models/Product.js";
-import { productsManager } from "./dao/mongoodb/product.manager.js";
-import { cartManager } from "./dao/mongoodb/cart.manager.js";
-import { Cart } from "./dao/Models/Cart.js";
+import { productsManager } from "../dao/mongoodb/product.manager.js";
+import { cartManager } from "../dao/mongoodb/cart.manager.js";
+import { Cart } from "../dao/Models/Cart.js";
 
 
 

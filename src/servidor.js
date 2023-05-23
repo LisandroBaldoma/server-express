@@ -1,26 +1,32 @@
 import express, { Router } from "express";
-import { PORT } from "./config/servidor.config.js";
+//import { PORT } from "./config/servidor.config.js";
 import { apiRouters } from "./routers/apiRouters.js";
 import { webRouters } from "./routers/web/webRouters.js";
-
 import { engine } from "express-handlebars";
 import { Server as SocketIOServer } from "socket.io";
-import { conectarMongooseDb } from "./database/mongoose.js";
 import session from "./middlewares/session.js";
 import { passportInitialize, passportSession } from "./middlewares/passport.js";
 import { manejoDeErrores } from "./middlewares/manejoDeErroresRest.js";
 
+import dotenv from 'dotenv'
+
+// Variables de entorno
+dotenv.config({
+  path:  
+  process.argv.slice(2)[0] === 'memoria' ? 'memoria.env' : process.argv.slice(2)[0] === 'atlas' ? 'atlas.env' : 'mongodb.env' 
+})
+
 // Configuracion Server
 const app = express();
-//const PORT = 8080
-const httpServer = app.listen(PORT, () => {
-  console.log(`Escuchando en puerto ${PORT}`);
+
+const httpServer = app.listen(process.env.PORT, () => {
+  console.log(`Escuchando en puerto ${process.env.PORT}`);
 });
 // me permite entAblar una comunnicacion entre los socket del servidor y del cliente
 const io = new SocketIOServer(httpServer);
 
 // Conexion a la BD
-await conectarMongooseDb();
+// await conectarMongooseDb();
 
 // Configuracion socketIO
 io.on("connection", async (socket) => {
@@ -51,20 +57,3 @@ app.use("/", webRouters);
 app.use("/api", apiRouters);
 app.use(manejoDeErrores)
 
-// Manejo de errores
-// app.use((error, req, res, next) => {
-//   switch (error.message) {
-//     case IDNOTFOUND:
-//       res.status(404);
-//       break;
-//     case CODEXIST:
-//       res.status(400);
-//       break;
-//     case EMPTY:
-//       res.status(400);
-//       break;
-//     default:
-//       res.status(500);
-//   }
-//   res.json({ message: error.message });
-// });
