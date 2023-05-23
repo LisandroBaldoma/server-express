@@ -23,10 +23,10 @@
 - npm install
 
 ## Segundo paso ( ejecutar el comando npm para iniciar el servidor )
-##se puede elegir entre 3 opciones de persistencia
+##se puede elegir entre 2 opciones de persistencia
 		npm test ( por defecto utiliza Mongodb local)
 		npm test memoria (solo para test con Postman)
-		npm atlas (utiliza monogoAtlas)
+		
 
 ### Tercer paso ( Probar servidor )
 - DESAFÍO ENTREGABLE - PROCESO DE TESTING

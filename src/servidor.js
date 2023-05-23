@@ -1,5 +1,4 @@
 import express, { Router } from "express";
-//import { PORT } from "./config/servidor.config.js";
 import { apiRouters } from "./routers/apiRouters.js";
 import { webRouters } from "./routers/web/webRouters.js";
 import { engine } from "express-handlebars";
@@ -13,7 +12,7 @@ import dotenv from 'dotenv'
 // Variables de entorno
 dotenv.config({
   path:  
-  process.argv.slice(2)[0] === 'memoria' ? 'memoria.env' : process.argv.slice(2)[0] === 'atlas' ? 'atlas.env' : 'mongodb.env' 
+  process.argv.slice(2)[0] === 'memoria' ? 'memoria.env' : 'mongodb.env' 
 })
 
 // Configuracion Server

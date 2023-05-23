@@ -4,14 +4,14 @@ import dotenv from 'dotenv'
 
 dotenv.config({
   path:  
-    process.argv.slice(2)[0] === 'memoria' ? 'memoria.env' : process.argv.slice(2)[0] === 'atlas' ? 'atlas.env' : 'mongodb.env' 
+    process.argv.slice(2)[0] === 'memoria' ? 'memoria.env' : 'mongodb.env' 
 })
 
 let cartDao
 let productsDao
 let usersDao
 
-if (process.env.TIPO_PERSISTENCIA === 'mongodb' || 'atlas') {
+if (process.env.TIPO_PERSISTENCIA === 'mongodb') {
   console.log(`Persistencia de Datos en: ${process.env.TIPO_PERSISTENCIA} `)
   await conectarMongooseDb();
   const { cartManager } = await import('./mongoodb/cart.manager.js')
