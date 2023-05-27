@@ -29,7 +29,6 @@ class CartManager {
   constructor(cartModel) {
     this.#cart = cartModel;
   }
-
   async createCart(cart) {
     const newCart = await this.#cart.create(cart);
     return newCart;

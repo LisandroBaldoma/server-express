@@ -26,7 +26,6 @@ class ProductManager {
   constructor() {
     this.#product = productModel;
   }
-
   async createProduct(product) {
     const newProduct = await this.#product.create(product);
     return newProduct;
@@ -102,13 +101,7 @@ class ProductManager {
     }
     return deleteProduct;
   }
-  async insertarTesting(product) {
-    const insertar = await this.#product.insertMany(product);
-    return insertar;
-  }
-  async deletedProductsTesting() {
-    await this.#product.deleteMany({});
-  }
+
 }
 
 export const productsManager = new ProductManager();
