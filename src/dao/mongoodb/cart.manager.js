@@ -97,12 +97,6 @@ class CartManager {
       throw new Error("El producto no existe en el carrito");
     }
   }
-  async getCartTesting() {
-    const cartTesting = await this.#cart.find({});
-    return cartTesting;
-  }
-  async deletedCartTesting() {
-    await this.#cart.deleteMany({});
-  }
+
 }
 export const cartManager = new CartManager(cartModel);

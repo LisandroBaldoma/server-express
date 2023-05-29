@@ -14,10 +14,11 @@ export async function handlePost(req, res, next) {
 export async function handleGet(req, res, next) {
   try {
     if (req.params.id) {
-      const result = await productsRepository.getProductByID(req.params.id);
+      const result = await productsRepository.findById(req.params.id);
       res.json(result);
     } else {
-      const result = await productsRepository.getProducts(req.query);
+      const result = await productsRepository.find(req.query);
+      console.log(req.query);
       res.json(result);
     }
   } catch (error) {
@@ -27,7 +28,7 @@ export async function handleGet(req, res, next) {
 
 export async function handlePut(req, res, next) {
   try {
-    const productUpdate = await productsRepository.updateProduct(
+    const productUpdate = await productsRepository.updateOne(
       req.params.id,
       req.body
     );
@@ -39,7 +40,7 @@ export async function handlePut(req, res, next) {
 
 export async function handleDelete(req, res, next) {
   try {
-    const deleteProduct = await productsRepository.deletedProduct(req.params.id);
+    const deleteProduct = await productsRepository.deleteOne(req.params.id);
     res.json({ status: "deleted", payload: deleteProduct });
   } catch (error) {
     next(error);

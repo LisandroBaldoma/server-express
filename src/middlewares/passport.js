@@ -1,7 +1,6 @@
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
 import { ValidarPassword } from "../utils/criptografia.js";
-import { userManager } from "../dao/mongoodb/user.manager.js";
 import { ErrorDeAutenticacion } from "../dao/Models/errors/ErrorDeAutenticacion.js";
 import { Strategy as GithubStrategy } from "passport-github2";
 import {
@@ -10,6 +9,7 @@ import {
   githubClientSecret,
   githubClienteId,
 } from "../config/auth.config.js";
+import { userRepository } from "../repositories/user.repository.js";
 
 passport.use(
   "local",
@@ -18,7 +18,7 @@ passport.use(
     async (username, password, done) => {
       //console.log(username, password);
 
-      const user = await userManager.getUserByEmail({ email: username });
+      const user = await userRepository.findOne({ email: username });
       //console.log("Este es el usuaario que tenria que encontrar", user);
       if (!user) return done(new ErrorDeAutenticacion());
 
@@ -26,7 +26,7 @@ passport.use(
         return done(new ErrorDeAutenticacion());
 
       delete user.password;
-      console.log(user)
+      //console.log(user)
       done(null, user);
     }
   )
@@ -41,7 +41,7 @@ passport.use(
       callbackURL: githubCallbackUrl,
     },
     async (accessToken, refreshToken, profile, done) => {
-      console.log(profile);
+      //console.log(profile);
       const user = {
         name: profile.username,
         profile: profile

@@ -1,62 +1,61 @@
 import mongoose, { Schema } from "mongoose";
+import { GenericDao } from "./GenericDao.js";
+import mongoosePaginate from "mongoose-paginate-v2";
 
 const collection = "users";
 
 const schemaUser = new mongoose.Schema(
   {
-    email: { type: String, required: true, unique: true, index: true},
-    password: { type: String, required: true },    
+    id: { type: String, required: true },
+    email: { type: String, required: true, unique: true, index: true },
+    password: { type: String, required: true },
     name: { type: String, required: true },
-    age: {type: Number, default: 18},
-    cart:{ type: Schema.Types.ObjectId, ref:"carts", required:true},
+    age: { type: Number, default: 18 },
+    cart: { type: Schema.Types.ObjectId, ref: "carts", required: true },
     lastName: { type: String, required: true },
-    rol: {type: String, enum:['user','admin'], default: 'user'}
+    rol: { type: String, enum: ["user", "admin"], default: "user" },
   },
   { versionKey: false }
 );
+schemaUser.plugin(mongoosePaginate);
 
 const userModel = mongoose.model(collection, schemaUser);
 
-class UserManager {
-  #user
-  constructor(){
-    this.#user =  userModel
-  }
+export const userManager = new GenericDao(userModel);
 
-  async deleteUserTesting(){
-    await this.#user.deleteMany({})
-  }
-  
-  async getUserByID(id) {
-    //console.log(id)
-    const user = await this.#user.findById(id).populate('cart').lean();    
-    return user;
-  }
+// class UserManager {
+//   #user
+//   constructor(){
+//     this.#user =  userModel
+//   }
 
-  async getUserByEmail(email) {
-    //console.log(email);
-    const user = await this.#user.findOne(email).lean();
-    return user;
-  }
+//   async getUserByID(id) {
+//     //console.log(id)
+//     const user = await this.#user.findById(id).populate('cart').lean();
+//     return user;
+//   }
 
-  async createUser(user) {
-    const newUser = await this.#user.create(user)    
-    return newUser;
-  }
+//   async getUserByEmail(email) {
+//     //console.log(email);
+//     const user = await this.#user.findOne(email).lean();
+//     return user;
+//   }
 
-  async getAllUsers(){
-    const users = await this.#user.find().lean()
-    return users
-  }
+//   async createUser(user) {
+//     const newUser = await this.#user.create(user)
+//     return newUser;
+//   }
 
-  async updtaePassword(body) {
-    const passwordUpdate = await this.#user.findOne(body.email).lean();
-    //TODO UPDATE PASSWORD 
-  }
+//   async getAllUsers(){
+//     const users = await this.#user.find().lean()
+//     return users
+//   }
 
-  async delete() {}
-  
-  
-}
+//   async updtaePassword(body) {
+//     const passwordUpdate = await this.#user.findOne(body.email).lean();
+//     //TODO UPDATE PASSWORD
+//   }
 
-export const userManager = new UserManager();
+//   async delete() {}
+
+// }

@@ -1,18 +1,5 @@
 [
   {
-    "id": "19d8b53f-26c0-48e8-b6ac-54awdc97a580c",
-    "title": "Computadora",
-    "description": "Pc Gamer",
-    "stock": 25,
-    "code": "pc256ssd8gb",
-    "price": 33567,
-    "status": true,
-    "thumbnails": [
-      "Sin imagen"
-    ],
-    "category": "Electronica"
-  },
-  {
     "id": "19d8b53f-26c0-48e8-b6wac-54adc97a580c",
     "title": "Parlante",
     "description": "Parlante JBL azul bluethoo",

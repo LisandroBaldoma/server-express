@@ -1,4 +1,7 @@
+import { newId } from "../../utils/criptografia.js";
+
 export class Product {
+  #id;
   #title;
   #description;
   #stock;
@@ -9,6 +12,7 @@ export class Product {
   #status;
 
   constructor({
+    id = newId(),
     title,
     description,
     stock,
@@ -18,6 +22,7 @@ export class Product {
     thumbnails,
     status,
   }) {
+    this.#id = id;
     this.#title = title;
     this.#description = description;
     this.#stock = stock;
@@ -28,6 +33,9 @@ export class Product {
     this.#status = status;
   }
 
+  get id() {
+    return this.#id;
+  }
   get title() {
     return this.#title;
   }
@@ -55,14 +63,15 @@ export class Product {
 
   datosProduct() {
     return {
-        title: this.#title,
-        description: this.#description,
-        stock: this.#stock,
-        price: this.#price,
-        code: this.#code,
-        category: this.#category,
-        thumbnails: this.#thumbnails,
-        status: this.#status,
+      id: this.#id,
+      title: this.#title,
+      description: this.#description,
+      stock: this.#stock,
+      price: this.#price,
+      code: this.#code,
+      category: this.#category,
+      thumbnails: this.#thumbnails,
+      status: this.#status,
     };
   }
 }

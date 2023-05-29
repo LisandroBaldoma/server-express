@@ -15,7 +15,7 @@ class UsersService {
     datosNewUser.cart = cartUser.id;
 
     const newUser = new User(datosNewUser);
-    const userRegister = await userRepository.createUser(newUser.datosUser());
+    const userRegister = await userRepository.create(newUser.datosUser());
     return userRegister;
   }
 }

@@ -2,7 +2,6 @@ import { Product } from "./Product.js";
 import fs from "fs/promises";
 import { randomUUID } from "crypto";
 
-
 class ProductManagerFS {
   #ruta;
   #products;
@@ -17,11 +16,11 @@ class ProductManagerFS {
     const json = JSON.stringify(this.#products, null, 2);
     await fs.writeFile(this.#ruta, json);
   }
-  async getProducts() {
-    console.log("getproducts fs")
+  async find() {
+    console.log("getproducts fs");
     await this.#readProducts();
     if (this.#products.length === 0) {
-      return this.#products
+      return this.#products;
     }
     return this.#products;
   }
@@ -48,7 +47,9 @@ class ProductManagerFS {
       category,
       id,
     });
-    const product = this.#products.find((prod) => prod.code === newProduct.code);
+    const product = this.#products.find(
+      (prod) => prod.code === newProduct.code
+    );
     if (product) {
       throw new Error("ID no existe");
     }
@@ -56,7 +57,7 @@ class ProductManagerFS {
     await this.#writeProduct();
     return newProduct;
   }
-  async getProductByID(id) {
+  async findById(id) {
     await this.#readProducts();
     const product = this.#products.find((prod) => prod.id === id);
     if (!product) {
@@ -64,7 +65,7 @@ class ProductManagerFS {
     }
     return product;
   }
-  async updateProduct(id, CamposUpdate) {
+  async updateOne(id, CamposUpdate) {
     if (Object.hasOwn(CamposUpdate, "id")) {
       delete CamposUpdate["id"];
     }
@@ -79,7 +80,7 @@ class ProductManagerFS {
       return this.#products[index];
     }
   }
-  async deletedProduct(id) {
+  async deleteOne(id) {
     await this.#readProducts();
     const index = this.#products.findIndex((prod) => prod.id === id);
     if (index === -1) {
@@ -87,9 +88,11 @@ class ProductManagerFS {
     } else {
       this.#products.splice(index, 1);
       this.#writeProduct();
-      return this.#products[index]
+      return this.#products[index];
     }
   }
 }
 
-export const productsManagerFS = new ProductManagerFS('./database/products.json');
+export const productsManagerFS = new ProductManagerFS(
+  "./database/products.json"
+);

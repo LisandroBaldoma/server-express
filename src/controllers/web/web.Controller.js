@@ -29,25 +29,25 @@ export function profileView(req, res, next) {
 export async function productsView(req, res, next) {
   // console.log(req.query)
   // console.log(req.user)
-  try {
-    const respuesta = await productsManager.getProducts(req.query);
-    const cartTesting = await cartManager.getCartTesting();
-    if (cartTesting.length === 0) {
-      res.render("error");
-    } else {
+  // try {
+    const respuesta = await productsManager.find(req.query);
+    // const cartTesting = await cartManager.getCartTesting();
+    // if (cartTesting.length === 0) {
+    //   res.render("error");
+    // } else {
       res.render("products", {
         title: "Prodcust",
         products: respuesta.payload.length > 0,
         productsList: respuesta.payload,
         data: respuesta,
-        cartTesting: cartTesting[0].id,
+        cartTesting: req.user.cart,
         user: req.user,
       });
     }
-  } catch (error) {
-    next(error);
-  }
-}
+  // } catch (error) {
+  //   next(error);
+  // }
+//}
 
 export async function cartDetailView(req, res, next) {
   try {

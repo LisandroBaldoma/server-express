@@ -1,5 +1,6 @@
 import crypto from "crypto";
 import bcrypt from "bcrypt";
+import { randomUUID } from 'node:crypto'
 import jwt from 'jsonwebtoken'
 // import { JWT_PRIVATE_KEY } from "../config/auth.config.js";
 
@@ -27,6 +28,11 @@ export function hashearPassword(password) {
 
 export function ValidarPassword(recibida, almacenada) {
   return bcrypt.compareSync(recibida, almacenada);
+}
+
+// Libreria para generar ID unicos
+export function newId() {
+  return randomUUID()
 }
 
 // Libreria JWT
