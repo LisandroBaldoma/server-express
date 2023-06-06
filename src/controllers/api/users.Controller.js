@@ -18,12 +18,17 @@ export async function handlePost(req, res, next) {
   }
 }
 
-export async function handleGet(req, res, next) {
-  if (req.params.id) {
-    const user = await userRepository.findByIdPopulate(req.params.id, "cart");    
-    res.json(user);
-  } else {
-    const users = await userRepository.find(req.query);
-    res.json(users);
+export async function handleGet(req, res, next) {  
+  try {
+    if (req.params.id) {
+      const user = await userRepository.findByIdPopulate(req.params.id, "cart");    
+      res.json(user);
+    } else {
+      const users = await userRepository.find(req.query);
+      res.json(users);
+    }
+    
+  } catch (error) {
+    next(error)
   }
 }

@@ -1,16 +1,19 @@
+
 export class Cart {
+  
   #products;
 
   constructor() {
+    
     this.#products = [];
   }
 
   get products() {
     return this.#products;
   }
-
+ 
   datosCarts() {
-    return {
+    return {        
         products: this.#products,
     };
   }

@@ -10,6 +10,7 @@ dotenv.config({
 let cartDao
 let productsDao
 let usersDao
+let ticketDao
 
 if (process.env.TIPO_PERSISTENCIA === 'mongodb') {
   console.log(`Persistencia de Datos en: ${process.env.TIPO_PERSISTENCIA} `)
@@ -17,9 +18,11 @@ if (process.env.TIPO_PERSISTENCIA === 'mongodb') {
   const { cartManager } = await import('./mongoodb/cart.manager.js')
   const { productsManager } = await import('./mongoodb/product.manager.js')
   const { userManager } = await import('./mongoodb/user.manager.js')
+  const { ticketManager } = await import('./mongoodb/ticket.manager.js')
   cartDao = cartManager
   productsDao = productsManager
   usersDao = userManager
+  ticketDao = ticketManager
 } else {
   console.log(`Persistencia de Datos en: ${process.env.TIPO_PERSISTENCIA} `)
   const { productsManagerFS } = await import('./fileSystem/ProductManagerFS.js')

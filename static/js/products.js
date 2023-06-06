@@ -42,7 +42,7 @@ if (buttonAddCart) {
       )
         .then((response) =>
           alert(
-            `El producto: ${btn.id}, se agrego con exito en el carrito de Testing ${cartUser.value}`
+            `El producto: ${btn.id}, se agrego con exito en el carrito ${cartUser.value}`
           )
         )
         .catch((error) => console.log(error));

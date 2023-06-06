@@ -1,7 +1,7 @@
 import { newId } from "../../utils/criptografia.js";
 
 export class User {
-  #id;
+  #user_id;
   #name;
   #lastName;
   #email;
@@ -11,7 +11,7 @@ export class User {
   #rol;
 
   constructor({ name, lastName, email, age, cart, password, rol }) {
-    this.#id = newId();
+    this.#user_id = newId();
     this.#name = name;
     this.#lastName = lastName;
     this.#email = email;
@@ -21,8 +21,8 @@ export class User {
     this.#rol = rol;
   }
 
-  get id() {
-    return this.#id;
+  get user_id() {
+    return this.#user_id;
   }
   get name() {
     return this.#name;
@@ -46,9 +46,11 @@ export class User {
     return this.#rol;
   }
 
+  // TODO CREAR FUNCION SET ROL
+
   datosUser() {
     return {
-      id: this.#id,
+      user_id: this.#user_id,
       name: this.#name,
       lastName: this.#lastName,
       email: this.#email,

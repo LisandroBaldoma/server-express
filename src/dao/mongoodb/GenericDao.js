@@ -13,7 +13,7 @@ export class GenericDao {
     return result;
   }
   async findById(criteria) {
-    const result = await this.#model.findById(criteria).lean();
+    const result = await this.#model.findById(criteria);
     if (!result) throw new Error("NOT FOUND");
     return result;
   }
@@ -69,9 +69,13 @@ export class GenericDao {
     return respuesta;
   }
   async findOne(criteria) {
-    const result = await this.#model.findOne(criteria).lean();
-    if (!result) throw new Error("NOT FOUND");
-    return result;
+    try {
+      const result = await this.#model.findOne(criteria).lean();      
+      return result;
+      
+    } catch (error) {
+      throw new Error("NOT FOUND");
+    }
   }
   async updateOne(criteria, newData) {
     const result = await this.#model
@@ -91,12 +95,16 @@ export class GenericDao {
   //   async deleteMany(criteria) {
   //     console.log("funcion TODO: Terminar")
   //   }
-  async findByIdPopulate(criteria, tabla) {
+  async findByIdPopulate(criteria, tabla) { 
     const result = await this.#model
       .findById(criteria)
       .populate({ path: `${tabla}`, strictPopulate: false })
       .lean();
     if (!result) throw new Error("NOT FOUND");
+    return result;
+  }
+  async insertMany(criteria){
+    const result = await this.#model.insertMany(criteria)
     return result;
   }
 }

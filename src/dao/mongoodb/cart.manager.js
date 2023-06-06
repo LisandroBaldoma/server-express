@@ -9,7 +9,7 @@ export const schemaProduct = new Schema(
     products: {
       type: [
         {
-          id: {
+          product: {
             type: Schema.Types.ObjectId,
             ref: "products",
             required: true,
@@ -35,21 +35,23 @@ class CartManager {
   }
   async getCartById(cid) {
     // POPULATION
-    const cart = await this.#cart.findById(cid).populate("products.id").lean();
+    const cart = await this.#cart.findById(cid).populate("products.product").lean();
     return cart;
   }  
   async addProductCart(cid, pid) {
-    const cart = await this.#cart.findById(cid);
-    const prod = await productsManager.getProductByID(pid);
-
-    const index = cart.products.findIndex((product) => product.id == pid);
+    //console.log(cid, pid)
+     const cart = await this.#cart.findById(cid);
+     const prod = await productsManager.findById(pid);
+     //console.log(cart)
+     //console.log(prod)
+    const index = cart.products.findIndex((product) => product.product == pid);
 
     if (index !== -1) {
       cart.products[index].quantity = cart.products[index].quantity + 1;
       cart.save();
       return cart.products[index];
     } else {
-      cart.products.push({ id: pid, quantity: 1 });
+      cart.products.push({ product: pid, quantity: 1 });
       cart.save();
       return cart.products;
     }
@@ -62,11 +64,13 @@ class CartManager {
     return cart;
   }
   async deleteProductCart(cid, pid) {
-    //console.log(cid, pid);
+    console.log(pid);
+    
     const cart = await this.#cart.findById(cid);
-    const prod = await productsManager.getProductByID(pid);
+    //const prod = await productsManager.findById(pid);
+    console.log(cart)
 
-    const index = cart.products.findIndex((product) => product.id == pid);
+    const index = cart.products.findIndex((product) => product.product == pid);
     if (index !== -1) {
       cart.products.splice(index, 1);
       cart.save();
@@ -74,7 +78,7 @@ class CartManager {
     } else {
       throw new Error("El producto no existe en el carrito");
     }
-  }
+   }
   async updateProductsCart(body, cid) {
     const cart = await this.#cart.findById(cid);
 
@@ -86,9 +90,9 @@ class CartManager {
   }
   async updateQuantiyProductsCart(pid, cid, body) {
     const cart = await this.#cart.findById(cid);
-    const prod = await productsManager.getProductByID(pid);
+    const prod = await productsManager.findById(pid);
 
-    const index = cart.products.findIndex((product) => product.id == pid);
+    const index = cart.products.findIndex((product) => product.product == pid);
     if (index !== -1) {
       cart.products[index].quantity = body.quantity;
       cart.save();

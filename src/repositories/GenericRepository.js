@@ -30,4 +30,7 @@ export class GenericRepository {
   findByIdPopulate(criteria, options) {
     return this.#dao.findByIdPopulate(criteria, options);
   }
+  insertMany(criteria){
+    return this.#dao.insertMany(criteria)
+  }
 }

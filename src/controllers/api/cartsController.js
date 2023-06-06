@@ -1,5 +1,8 @@
+import { Ticket } from "../../dao/Models/Ticket.js";
+import { ticketManager } from "../../dao/mongoodb/ticket.manager.js";
 import { cartRpository } from "../../repositories/cart.repository.js";
 import { cartService } from "../../services/carts.service.js";
+import { ticketService } from "../../services/ticket.service.js";
 
 export async function handlePost(req, res, next) {
   try {
@@ -19,6 +22,18 @@ export async function handlePostAdd(req, res, next) {
     res.json(result);
   } catch (error) {
     next(error);
+  }
+}
+
+export async function handlePostpurchase(req, res, next){
+  try {
+    // const ticket = new Ticket(req.body)
+    // console.log(ticket.dtoTicket())
+    // const result = await ticketManager.create(req.body)
+     const result = await ticketService.purchase(req.params.cid, req.body)
+     res.json(result);
+  }catch (error) {
+    next(error)
   }
 }
 

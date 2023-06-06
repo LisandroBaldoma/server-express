@@ -1,5 +1,6 @@
 import { cartManager } from "../../dao/mongoodb/cart.manager.js";
 import { productsManager } from "../../dao/mongoodb/product.manager.js";
+import { productsRepository } from "../../repositories/product.respository.js";
 
 export function homeView(req, res, next) {
   res.render("home", {
@@ -27,27 +28,22 @@ export function profileView(req, res, next) {
 }
 
 export async function productsView(req, res, next) {
-  // console.log(req.query)
-  // console.log(req.user)
-  // try {
-    const respuesta = await productsManager.find(req.query);
-    // const cartTesting = await cartManager.getCartTesting();
-    // if (cartTesting.length === 0) {
-    //   res.render("error");
-    // } else {
+  try {
+    const respuesta = await productsRepository.find(req.query);    
       res.render("products", {
         title: "Prodcust",
         products: respuesta.payload.length > 0,
         productsList: respuesta.payload,
-        data: respuesta,
-        cartTesting: req.user.cart,
+        data: respuesta,        
         user: req.user,
       });
+    
+  } catch (error) {
+    next(error)
+  }
+  
     }
-  // } catch (error) {
-  //   next(error);
-  // }
-//}
+  
 
 export async function cartDetailView(req, res, next) {
   try {

@@ -12,5 +12,6 @@ export async function logoutSessionsController(req, res, next) {
 export function postSessionsController(req, res, next) {
   //console.log("post session controller despues de buscar el usuario cuando puse login")
   //console.log(req.session)
+  //console.log(req.user)
   res.status(201).json(req.user);
 }

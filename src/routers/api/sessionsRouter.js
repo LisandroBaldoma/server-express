@@ -25,4 +25,4 @@ sessionsRouter.get("/github/callback", antenticacionPorGithub_CB, (req, res, nex
 sessionsRouter.post("/logout", logoutSessionsController); //POST http://localhost:8080/api/sessions/logout
 
 // datos de sesion, para testear!
-sessionsRouter.get("/current", soloLogueadosApi, getCurrentSessionController); //POST http://localhost:8080/api/sessions/current
+sessionsRouter.get("/current", soloLogueadosApi, getCurrentSessionController); //GET http://localhost:8080/api/sessions/current
