@@ -521,17 +521,17 @@
 							"urlencoded": [
 								{
 									"key": "name",
-									"value": "Lisandro Postman",
+									"value": "Facundo",
 									"type": "text"
 								},
 								{
 									"key": "lastName",
-									"value": "Baldoma Ppostman",
+									"value": "Baldoma",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "postman@hotmail.com",
+									"value": "facu2@hotmail.com",
 									"type": "text"
 								},
 								{
@@ -565,23 +565,13 @@
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "name",
-									"value": "Lisandro Postman",
-									"type": "text"
-								},
-								{
-									"key": "lastName",
-									"value": "Baldoma Ppostman",
-									"type": "text"
-								},
-								{
 									"key": "email",
-									"value": "postman@hotmail.com",
+									"value": "baldomalisandro@hotmail.coma",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "admin1234",
+									"value": "admin1234a",
 									"type": "text"
 								}
 							]
@@ -651,11 +641,8 @@
 				},
 				{
 					"name": "UserLogout",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "urlencoded",
@@ -683,7 +670,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/github",
+							"raw": "http://localhost:8080/api/sessions/logout",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -691,7 +678,8 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"github"
+								"sessions",
+								"logout"
 							]
 						}
 					},
@@ -707,31 +695,10 @@
 						"header": [],
 						"body": {
 							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "name",
-									"value": "Lisandro Postman",
-									"type": "text"
-								},
-								{
-									"key": "lastName",
-									"value": "Baldoma Ppostman",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "postman@hotmail.com",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "admin1234",
-									"type": "text"
-								}
-							]
+							"urlencoded": []
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/github",
+							"raw": "http://localhost:8080/api/sessions/current",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -739,7 +706,50 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"github"
+								"sessions",
+								"current"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ticket",
+			"item": [
+				{
+					"name": "purchase",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"647512edee02b0443a9de84a\",\r\n    \"code\":\"kcmsckmdskcmkdsmcsd\",\r\n    \"purchase_dateTime\": \"2023-06-23\",\r\n    \"amount\": 23453,\r\n    \"purchase\": \"baldomalisandro@hotmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/carts/:cid/purchase",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"carts",
+								":cid",
+								"purchase"
+							],
+							"variable": [
+								{
+									"key": "cid",
+									"value": "647512edee02b0443a9de84a"
+								}
 							]
 						}
 					},
