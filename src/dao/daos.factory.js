@@ -35,4 +35,4 @@ if (process.env.TIPO_PERSISTENCIA === 'mongodb') {
   
 }
 
-export { cartDao, productsDao, usersDao }
+export { cartDao, productsDao, usersDao, ticketDao }

@@ -1,5 +1,6 @@
 import { cartManager } from "../../dao/mongoodb/cart.manager.js";
 import { productsManager } from "../../dao/mongoodb/product.manager.js";
+import { cartRpository } from "../../repositories/cart.repository.js";
 import { productsRepository } from "../../repositories/product.respository.js";
 
 export function homeView(req, res, next) {
@@ -47,10 +48,12 @@ export async function productsView(req, res, next) {
 
 export async function cartDetailView(req, res, next) {
   try {
-    const respuesta = await cartManager.getCartById(req.params.cid);
+    // const respuesta = await cartRpository.findOne({_id:req.params.cid});
+    const respuesta = await cartRpository.findByIdPopulate(req.params.cid, "products.product");
+    const cart = await cartRpository.findById(req.params.cid);    
     res.render("cartView", {
       title: "CartDetail",
-      cart: respuesta._id,
+      cart: cart._id,
       products: respuesta.products.length > 0,
       productsList: respuesta.products,
     });

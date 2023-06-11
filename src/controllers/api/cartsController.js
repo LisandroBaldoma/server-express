@@ -15,7 +15,7 @@ export async function handlePost(req, res, next) {
 
 export async function handlePostAdd(req, res, next) {
   try {
-    const result = await cartRpository.addProductCart(
+    const result = await cartService.addProductCart(
       req.params.cid,
       req.params.pid
     );
@@ -26,11 +26,8 @@ export async function handlePostAdd(req, res, next) {
 }
 
 export async function handlePostpurchase(req, res, next){
-  try {
-    // const ticket = new Ticket(req.body)
-    // console.log(ticket.dtoTicket())
-    // const result = await ticketManager.create(req.body)
-     const result = await ticketService.purchase(req.params.cid, req.body)
+  try {    
+     const result = await ticketService.purchase(req.params.cid)
      res.json(result);
   }catch (error) {
     next(error)
@@ -39,7 +36,7 @@ export async function handlePostpurchase(req, res, next){
 
 export async function handleGet(req, res, next) {
   try {
-    const result = await cartRpository.getCartById(req.params.cid);
+    const result = await cartRpository.findByIdPopulate(req.params.cid, "products.product");
     res.json(result);
   } catch (error) {
     next(error);
@@ -48,7 +45,7 @@ export async function handleGet(req, res, next) {
 
 export async function handleDeleteAll(req, res, next) {
   try {
-    const result = await cartRpository.deleteAllProductCart(req.params.cid);
+    const result = await cartService.deleteAllProductCart(req.params.cid);
     res.json(result);
   } catch (error) {
     next(error);
@@ -57,7 +54,7 @@ export async function handleDeleteAll(req, res, next) {
 
 export async function handleDeleteOne(req, res, next) {
   try {
-    const result = await cartRpository.deleteProductCart(
+    const result = await cartService.deleteProductCart(
       req.params.cid,
       req.params.pid
     );
@@ -69,7 +66,7 @@ export async function handleDeleteOne(req, res, next) {
 
 export async function handleUpdateOne(req, res, next) {
   try {
-    const result = await cartRpository.updateProductsCart(
+    const result = await cartService.updateProductsCart(
       req.body,
       req.params.cid
     );
@@ -81,7 +78,7 @@ export async function handleUpdateOne(req, res, next) {
 
 export async function HandleUpdateQuantiy(req, res, next) {
   try {
-    const result = await cartRpository.updateQuantiyProductsCart(
+    const result = await cartService.updateQuantiyProductsCart(
       req.params.pid,
       req.params.cid,
       req.body

@@ -2,6 +2,43 @@
 
 - Servidor Backend E-commerce.
 
+### TERCER ENTREGA PROYECTO FINAL
+
+- Arquitectura del sevidor:
+	- Patron Repository
+- Modelo Ticket creado.
+- Agregue ruta /api/carts/:cid/purchase
+- Proceso de compra:
+	- Si el producto no cuenta con stock suficiente no se procesa se devuelve con un mensaje  indicando los producto que no fueron procesados.
+	-Si el producto cuenta con Stock se genera la compra y se devuelve el ticket de la compra
+	- Cuando la compra finaliza el carrito queda con los productos que no pudieron procesarse por falta de Stock, en caso de no tener ninguno queda vacio.
+
+- Proteccion de rutas:
+	- Solo el usuario puede agregar productos al carrito
+	- Solo el administrador puede crear, actualizar o eliminar productos
+
+#  Instrucciones para el correcto funcionamiento
+
+### Primer paso ( Descargar el proyecto e instalar dependencias )
+- Clonar Repositorio
+- npm install
+
+### Segundo paso ( ejecutar el comando npm para iniciar el servidor )
+		npm test ( por defecto utiliza Mongodb local)
+
+### Tercer paso ( Probar servidor )
+- DESAFÍO ENTREGABLE - PROCESO DE TESTING
+- en la carpeta test/postman 
+	-Esta el archivo con todos los Endpoint para realizar el test completo de la App desde Postman
+	 Tambien se puede abrir una pestaña en http://localhost:8080
+
+-En todas las pruebas se debera crear un Usuario y Loguerse a la App para poder acceder a la compra de los Productos
+
+
+---------------------------------------------------------------------------------------------------
+
+------------
+
 ## DESAFÍO ENTREGABLE 
 ###RESTRUCTURACION DEL SERVIDOR
 

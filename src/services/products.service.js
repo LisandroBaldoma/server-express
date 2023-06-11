@@ -9,19 +9,6 @@ class ProductsService {
     const result = await productsRepository.create(productNew.datosProduct());
     return result;
   }
-  async descotarStock(pid, quantity){ 
-    //console.log(pid,quantity)
-    const product = await productsRepository.findById(pid);
-    if(product.stock < quantity){
-      throw new Error('Stock insuficiente')
-    }
-    //console.log(product)
-    product.stock = product.stock - quantity;
-    //console.log(product)    
-    product.save()
-    return product
-  }
-  
   
 }
 
