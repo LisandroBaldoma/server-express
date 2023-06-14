@@ -2,6 +2,37 @@
 
 - Servidor Backend E-commerce.
 
+### DESAFIO ENTREGBLE MOCKING Y MANEJO DE ERRORES
+
+- ENDPOINT 
+	http://localhost:8080/api/mockingproducts
+	Genera 100 productos, los devueLve en formato JSON
+
+- MANEJO DE ERRORES
+	implemente Middleware y clases de errores comunes .
+
+#  Instrucciones para el correcto funcionamiento
+
+### Primer paso ( Descargar el proyecto e instalar dependencias )
+- Clonar Repositorio
+- npm install
+
+### Segundo paso ( ejecutar el comando npm para iniciar el servidor )
+		npm test ( por defecto utiliza Mongodb local)
+		Agregar string de conexion MOONGODB_CONECTION_STRING en archivo
+		.mongodb.env
+
+### Tercer paso ( Probar servidor )
+- DESAFÍO ENTREGABLE - PROCESO DE TESTING
+- en la carpeta test/postman 
+	-Esta el archivo con todos los Endpoint para realizar el test completo de la App desde Postman
+	 Tambien se puede abrir una pestaña en http://localhost:8080
+
+-En todas las pruebas se debera crear un Usuario y Loguerse a la App para poder acceder a la compra de los Productos
+
+
+---------------------------------------------------------------------------------------------------
+
 ### TERCER ENTREGA PROYECTO FINAL
 
 - Arquitectura del sevidor:
@@ -17,25 +48,7 @@
 	- Solo el usuario puede agregar productos al carrito
 	- Solo el administrador puede crear, actualizar o eliminar productos
 
-#  Instrucciones para el correcto funcionamiento
 
-### Primer paso ( Descargar el proyecto e instalar dependencias )
-- Clonar Repositorio
-- npm install
-
-### Segundo paso ( ejecutar el comando npm para iniciar el servidor )
-		npm test ( por defecto utiliza Mongodb local)
-
-### Tercer paso ( Probar servidor )
-- DESAFÍO ENTREGABLE - PROCESO DE TESTING
-- en la carpeta test/postman 
-	-Esta el archivo con todos los Endpoint para realizar el test completo de la App desde Postman
-	 Tambien se puede abrir una pestaña en http://localhost:8080
-
--En todas las pruebas se debera crear un Usuario y Loguerse a la App para poder acceder a la compra de los Productos
-
-
----------------------------------------------------------------------------------------------------
 
 ------------
 
@@ -52,21 +65,6 @@
 	PORT (puerto en el que escuchara el serivdor )
 	MOONGODB_CONECTION_STRING (String de conexion para Mongodb)
 
-
-#  Instrucciones para el correcto funcionamiento
-
-### Primer paso ( Descargar el proyecto e instalar dependencias )
-- Clonar Repositorio
-- npm install
-
-## Segundo paso ( ejecutar el comando npm para iniciar el servidor )
-##se puede elegir entre 2 opciones de persistencia
-		npm test ( por defecto utiliza Mongodb local)
-		npm test memoria (solo para test con Postman)
-		
-
-### Tercer paso ( Probar servidor )
-- DESAFÍO ENTREGABLE - PROCESO DE TESTING
 
 ###EndPoint User-
 - http://localhost:8080 (home) Vista protegida
