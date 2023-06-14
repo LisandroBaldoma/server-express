@@ -756,6 +756,31 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Mock & Testing",
+			"item": [
+				{
+					"name": "Generar products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/mockingproducts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"mockingproducts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

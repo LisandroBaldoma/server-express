@@ -2,7 +2,7 @@ import express, { Router } from "express";
 
 import {
   handlePost,
-  handleGet,  
+  handleGet,
   handlePut,
   handleDelete,
 } from "../../controllers/api/productsController.js";
