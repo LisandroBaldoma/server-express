@@ -6,7 +6,7 @@
 
 - ENDPOINT 
 	http://localhost:8080/api/testlogger
-	Genera 100 productos, los devueLve en formato JSON
+	
 
 - LOGGER LIBRERIA WINSTON
 	implemente Middleware logger .
