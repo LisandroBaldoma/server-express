@@ -1,4 +1,5 @@
 //import { productsManager } from "../../dao/mongoodb/product.manager.js";
+import { ErrorNotFoundProducts } from "../../dao/Models/errors/ErrorNotFound.js";
 import { productsRepository } from "../../repositories/product.respository.js";
 import { productService } from "../../services/products.service.js";
 
@@ -11,7 +12,8 @@ export async function handlePost(req, res, next) {
   }
 }
 
-export async function handleGet(req, res, next) {
+export async function handleGet(req, res, next) {  
+  req.logger.http('Handle_Get Prodcuts')
   try {
     if (req.params.id) {
       const result = await productsRepository.findById(req.params.id);
@@ -21,12 +23,14 @@ export async function handleGet(req, res, next) {
       console.log(req.query);
       res.json(result);
     }
-  } catch (error) {
+  } catch (error) {   
+    req.logger.fatal('error en el handlefet de productos')
     next(error);
   }
 }
 
 export async function handlePut(req, res, next) {
+  req.logger.http('Handle_Put Prodcuts')
   try {
     const productUpdate = await productsRepository.updateOne(
       req.params.id,
@@ -39,6 +43,7 @@ export async function handlePut(req, res, next) {
 }
 
 export async function handleDelete(req, res, next) {
+  req.logger.http('Handle_Deleted Prodcuts')
   try {
     const deleteProduct = await productsRepository.deleteOne(req.params.id);
     res.json({ status: "deleted", payload: deleteProduct });

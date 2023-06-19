@@ -6,15 +6,15 @@ import { Server as SocketIOServer } from "socket.io";
 import session from "./middlewares/session.js";
 import { passportInitialize, passportSession } from "./middlewares/passport.js";
 
-
-import dotenv from 'dotenv'
+import dotenv from "dotenv";
 import { manejoDeErrores } from "./middlewares/manejoDeErrores.js";
+import { logger } from "./middlewares/logger.js";
+//import { logger } from "./middlewares/logger.js";
 
 // Variables de entorno
 dotenv.config({
-  path:  
-  process.argv.slice(2)[0] === 'memoria' ? 'memoria.env' : 'mongodb.env' 
-})
+  path: process.argv.slice(2)[0] === "memoria" ? "memoria.env" : "mongodb.env",
+});
 
 // Configuracion Server
 const app = express();
@@ -32,6 +32,8 @@ const io = new SocketIOServer(httpServer);
 io.on("connection", async (socket) => {
   console.log("Cliente nuevo Conectado");
 });
+
+app.use(logger);
 
 app.use((req, res, next) => {
   req["io"] = io;
@@ -55,5 +57,5 @@ app.use(passportInitialize, passportSession);
 
 app.use("/", webRouters);
 app.use("/api", apiRouters);
-app.use( manejoDeErrores )
 
+app.use(manejoDeErrores);
