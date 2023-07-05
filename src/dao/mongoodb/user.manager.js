@@ -13,7 +13,7 @@ const schemaUser = new mongoose.Schema(
     age: { type: Number, default: 18 },
     cart: { type: Schema.Types.ObjectId, ref: "carts", required: true },
     lastName: { type: String, required: true },
-    rol: { type: String, enum: ["user", "admin"], default: "user" },
+    rol: { type: String, enum: ["user", "admin", "premium"], default: "user" },
   },
   { versionKey: false }
 );

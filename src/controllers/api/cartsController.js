@@ -17,7 +17,8 @@ export async function handlePostAdd(req, res, next) {
   try {
     const result = await cartService.addProductCart(
       req.params.cid,
-      req.params.pid
+      req.params.pid,
+      req.user.email      
     );
     res.json(result);
   } catch (error) {

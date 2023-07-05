@@ -30,27 +30,27 @@ export function profileView(req, res, next) {
 
 export async function productsView(req, res, next) {
   try {
-    const respuesta = await productsRepository.find(req.query);    
-      res.render("products", {
-        title: "Prodcust",
-        products: respuesta.payload.length > 0,
-        productsList: respuesta.payload,
-        data: respuesta,        
-        user: req.user,
-      });
-    
+    const respuesta = await productsRepository.find(req.query);
+    res.render("products", {
+      title: "Prodcust",
+      products: respuesta.payload.length > 0,
+      productsList: respuesta.payload,
+      data: respuesta,
+      user: req.user,
+    });
   } catch (error) {
-    next(error)
+    next(error);
   }
-  
-    }
-  
+}
 
 export async function cartDetailView(req, res, next) {
   try {
     // const respuesta = await cartRpository.findOne({_id:req.params.cid});
-    const respuesta = await cartRpository.findByIdPopulate(req.params.cid, "products.product");
-    const cart = await cartRpository.findById(req.params.cid);    
+    const respuesta = await cartRpository.findByIdPopulate(
+      req.params.cid,
+      "products.product"
+    );
+    const cart = await cartRpository.findById(req.params.cid);
     res.render("cartView", {
       title: "CartDetail",
       cart: cart._id,
@@ -61,5 +61,21 @@ export async function cartDetailView(req, res, next) {
     next(error);
   }
 }
+
+export async function updatePassword(req, res, next) {
+  try {
+    const respuesta = await productsRepository.find(req.query);
+    res.render("updtaePassword", {
+      // title: "Upsate Password",
+      // products: respuesta.payload.length > 0,
+      // productsList: respuesta.payload,
+      // data: respuesta,
+      // user: req.user,
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
 
 //TODO CAMBIAR NOMBRE PArA REFERIRME A USER WEB CONTROLLER

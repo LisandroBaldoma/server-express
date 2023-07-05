@@ -2,7 +2,7 @@ import crypto from "crypto";
 import bcrypt from "bcrypt";
 import { randomUUID } from 'node:crypto'
 import jwt from 'jsonwebtoken'
-// import { JWT_PRIVATE_KEY } from "../config/auth.config.js";
+import { JWT_PRIVATE_KEY, JWT_SECRET } from "../config/auth.config.js";
 
 // Libreria crypto
 // Un salt sera un codigo secreto unico para cada encriptado de contraseña
@@ -36,6 +36,20 @@ export function newId() {
 }
 
 // Libreria JWT
+
+export function generarToken(dato) {
+  return jwt.sign(dato, JWT_SECRET, { expiresIn: '1h' })
+}
+
+export function decodificarToken(token) {
+  try {
+    return jwt.verify(token, JWT_SECRET)
+  } catch (error) {
+    throw new Error('error de autenticacion: sesión expirada')
+  }
+}
+
+
 
 // export function encriptarJWT(payload) {
 //   const token = jwt.sign(JSON.parse(JSON.stringify(payload)), JWT_PRIVATE_KEY, {

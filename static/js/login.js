@@ -1,4 +1,3 @@
-console.log("Estamos adentro de login")
 
 const formLogin = document.querySelector('#formLogin')
 

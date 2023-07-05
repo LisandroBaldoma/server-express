@@ -9,14 +9,13 @@ class CartsService {
     return result;
   }
 
-  async addProductCart(cid, pid) {
-    //console.log(cid, pid)
+  async addProductCart(cid, pid, userMail) {    
     const cart = await cartRpository.findById(cid);
-    const prod = await productsRepository.findById(pid);
-    //console.log(cart)
-    //console.log(prod)
+    const prod = await productsRepository.findById(pid);    
     const index = cart.products.findIndex((product) => product.product == pid);
-
+    if(userMail === prod.owner){
+      throw new Error("No puede agregar un producto que fue creado por usted mismo"); 
+    }
     if (index !== -1) {
       cart.products[index].quantity = cart.products[index].quantity + 1;
       cart.save();

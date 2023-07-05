@@ -2,6 +2,29 @@
 
 - Servidor Backend E-commerce.
 
+### DESAFIO COMPLEMENTARIO
+
+##Restablecer contraseña.
+
+#  Instrucciones para el correcto funcionamiento
+
+### Primer paso ( Descargar el proyecto e instalar dependencias )
+	 Clonar Repositorio
+	 npm install
+
+### Segundo paso ( podemos optar por las siguientes opciones ) en ambos casos  Agregar string de conexion MOONGODB_CONECTION_STRING en archivo:  developer.env y production.env.
+
+	 npm test (por defecto carga el modo desarrollo donde muestra los mensajes de logger por consola)
+	 npm test production (carga el modo produccion donde muestra los mensajes de logger en archivo events.log)
+
+### Tercer paso ( Probar servidor )
+- DESAFÍO ENTREGABLE - PROCESO DE TESTING
+- en la carpeta test/postman 
+	-Esta el archivo con todos los Endpoint para realizar el test completo de la App desde Postman
+	 Tambien se puede abrir una pestaña en http://localhost:8080
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ### DESAFIO ENTREGABLE LOGGER
 
 - ENDPOINT 

@@ -21,6 +21,19 @@ export class User {
     this.#rol = rol;
   }
 
+  set rol(value) {
+    if (value === 'user' && value !== 'premium') throw new Error('Solo puede cambiar el rol si es user o premium')
+    this.#rol = value
+    if(value === 'user'){
+      this.#rol = 'premium'
+    }
+    if(value === 'premium'){
+      this.#rol = 'user'
+    }  
+
+  }
+
+
   get user_id() {
     return this.#user_id;
   }

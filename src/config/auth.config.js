@@ -6,3 +6,5 @@ export const githubCallbackUrl = 'http://localhost:8080/api/sessions/github/call
 export const JWT_PRIVATE_KEY = 'jwt_private_key'
 // export const COOKIE_SECRET = 'cookie_secret'
 
+export const JWT_SECRET = 'cookie_secret';
+

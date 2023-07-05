@@ -15,6 +15,7 @@ const schemaProduct = new Schema(
     category: { type: String, required: true },
     thumbnails: { type: Array, required: true },
     status: { type: Boolean, required: true },
+    owner:{ type: String, required: true },
   },
   { versionKey: false }
 );

@@ -97,7 +97,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"Heladera Post\",\r\n    \"description\": \"Heladera NoFrost\",\r\n    \"stock\": 3,\r\n    \"code\": \"post heladera\",\r\n    \"price\": 123455,\r\n    \"status\": true,\r\n    \"thumbnails\": [\r\n      \"Sin imagen\"\r\n    ],\r\n    \"category\": \"Linea Blanca\"\r\n  }",
+							"raw": "{\r\n    \"title\": \"Heladera Post\",\r\n    \"description\": \"Heladera NoFrost\",\r\n    \"stock\": 3,\r\n    \"code\": \"heladera34da3 fdsf\",\r\n    \"price\": 123455,\r\n    \"status\": true,\r\n    \"thumbnails\": [\r\n      \"Sin imagen\"\r\n    ],\r\n    \"category\": \"Linea Blanca\"\r\n    \r\n  }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -566,12 +566,12 @@
 							"urlencoded": [
 								{
 									"key": "email",
-									"value": "baldomalisandro@hotmail.coma",
+									"value": "baldomalisandro@hotmail.com",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "admin1234a",
+									"value": "admin1234",
 									"type": "text"
 								}
 							]
@@ -708,6 +708,94 @@
 								"api",
 								"sessions",
 								"current"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cambiar rol usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/user/premium/:uid",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"premium",
+								":uid"
+							],
+							"variable": [
+								{
+									"key": "uid",
+									"value": "647512edee02b0443a9de84c"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"baldomalisandro@hotmail.com\",\r\n    \"newPassword\": \"admin1234\",\r\n    \"confirmPassword\" : \"admin1234\",\r\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhbGRvbWFsaXNhbmRyb0Bob3RtYWlsLmNvbSIsImlhdCI6MTY4ODUyNDM5NiwiZXhwIjoxNjg4NTI3OTk2fQ.4hWF9juVBDDu_Vy8D1IoVdN1YhnzfACZUej2YJTlWHw\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/user/passwordupdate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"passwordupdate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "enviar email password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"baldomalisandro@hotmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/user/emailpassword",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"emailpassword"
 							]
 						}
 					},

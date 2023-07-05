@@ -70,7 +70,8 @@ export class GenericDao {
   }
   async findOne(criteria) {
     try {
-      const result = await this.#model.findOne(criteria).lean();      
+      // le saco el lean() para poder actualizar contraseñas si surge un error mas adelante por usar el metodo en otro lado revisar contraseña
+      const result = await this.#model.findOne(criteria);      
       return result;
       
     } catch (error) {

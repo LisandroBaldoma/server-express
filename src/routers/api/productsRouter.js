@@ -7,14 +7,17 @@ import {
   handleDelete,
 } from "../../controllers/api/productsController.js";
 
-import { productsAction } from "../../middlewares/permisoAcciones.js";
+import {
+  productsAdddAction,
+  productsDeletedAction,
+} from "../../middlewares/permisoAcciones.js";
 
 export const productsRouter = Router();
 
 productsRouter.get("/:id?", handleGet);
 
-productsRouter.post("/", productsAction, handlePost);
+productsRouter.post("/", productsAdddAction, handlePost);
 
-productsRouter.put("/:id", productsAction, handlePut);
+productsRouter.put("/:id", productsDeletedAction, handlePut);
 
-productsRouter.delete("/:id", productsAction, handleDelete);
+productsRouter.delete("/:id", productsDeletedAction, handleDelete);

@@ -10,6 +10,7 @@ export class Product {
   #category;
   #thumbnails;
   #status;
+  #owner;
 
   constructor({
     id = newId(),
@@ -21,6 +22,7 @@ export class Product {
     category,
     thumbnails,
     status,
+    owner,
   }) {
     this.#id = id;
     this.#title = title;
@@ -31,6 +33,7 @@ export class Product {
     this.#category = category;
     this.#thumbnails = thumbnails;
     this.#status = status;
+    this.#owner = owner;
   }
 
   get id() {
@@ -60,6 +63,9 @@ export class Product {
   get status() {
     return this.#status;
   }
+  get owner() {
+    return this.#owner;
+  }
 
   datosProduct() {
     return {
@@ -72,6 +78,7 @@ export class Product {
       category: this.#category,
       thumbnails: this.#thumbnails,
       status: this.#status,
+      owner: this.#owner,
     };
   }
 }
