@@ -6,6 +6,24 @@
 
 ##Restablecer contraseña.
 
+	Nuevo rol en el schema de usuarios "PREMIUM" estos usuarios solo pueden borrar los productos que le pertenecen, el "ADMIN" puede borrar cualquier producto.
+	Nuevo campo en schema productos "OWNER" guarda el email del usuario que lo creo siempe que sea "PREMIUM"
+
++ Update contraseña: 
+	 Cree una ruta en POSTMAN para pedir el cambio de la contraseña http://localhost:8080/api/user/emailpassword 
+	 en el body de la peticion debe incluirse el mail al cual sera enviado en el campo email.
+	 El mail se envia con los siguientes datos:
+	 Token: uqe expira en 1 hora
+	 Link: para hacer la peticion de cambio de contraseña
+	 en el body del post que se recibe en el mail debe incuirse los siguientes datos 
+	 {
+	 email:
+	 newPassword:
+	 confirmPasssword:
+	 token:
+	 }
+	Si todos los datos son correctos se actualizara la contraseña.
+
 #  Instrucciones para el correcto funcionamiento
 
 ### Primer paso ( Descargar el proyecto e instalar dependencias )
