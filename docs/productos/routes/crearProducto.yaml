@@ -1,5 +1,5 @@
 paths:
-  api/products:
+  /api/products:
     post:
       summary: Crea una nueva mascota.
       tags:
