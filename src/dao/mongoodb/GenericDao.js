@@ -69,33 +69,32 @@ export class GenericDao {
     return respuesta;
   }
   async findOne(criteria) {
-    try {
+    
       // le saco el lean() para poder actualizar contraseñas si surge un error mas adelante por usar el metodo en otro lado revisar contraseña
       const result = await this.#model.findOne(criteria);      
-      return result;
+      if(!result){
+        throw new Error('NOT FOUND')
+      }else{
+        return result;
+      }
       
-    } catch (error) {
-      throw new Error("NOT FOUND");
-    }
+   
+
   }
   async updateOne(criteria, newData) {
     const result = await this.#model
-      .findByIdAndUpdate(criteria, newData)
+      .findByIdAndUpdate(criteria, newData, {new:true})
       .lean();
     if (!result) throw new Error("NOT FOUND");
     return result;
   }
-  //   async updateMany(criteria, newData) {
-  //     console.log("funcion TODO: Terminar")
-  //   }
+  
   async deleteOne(criteria) {
-    const result = await this.#model.findByIdAndRemove(criteria).lean();
+    const result = await this.#model.findByIdAndRemove(criteria);
     if (!result) throw new Error("NOT FOUND");
     return result;
   }
-  //   async deleteMany(criteria) {
-  //     console.log("funcion TODO: Terminar")
-  //   }
+  
   async findByIdPopulate(criteria, tabla) { 
     const result = await this.#model
       .findById(criteria)

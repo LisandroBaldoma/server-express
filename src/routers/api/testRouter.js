@@ -1,7 +1,7 @@
-import express, { Router } from "express";
-import {testGenerateProducts, testLogger } from "../../controllers/api/testController.js";
+// import express, { Router } from "express";
+// import {testGenerateProducts, testLogger } from "../../controllers/api/testController.js";
 
-export const testRouter = Router();
+// export const testRouter = Router();
 
-testRouter.get("/testlogger", testLogger);
-testRouter.get("/mockingproducts", testGenerateProducts);
+// testRouter.get("/testlogger", testLogger);
+// testRouter.get("/mockingproducts", testGenerateProducts);

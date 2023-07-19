@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import { Product } from "../dao/Models/Product.js";
+import { Product } from "../src/dao/Models/Product.js";
 
 export default async function generateProducts() {
   const productRepositoryMock = {

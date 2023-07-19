@@ -72,20 +72,7 @@ class UsersService {
           userUpdate.password = hashearPassword(user.newPassword);
 
           userUpdate.save();
-        }
-          
-        
-        
-
-        // const tokenUser = { ...userUpdate };
-        // const token = generarToken(tokenUser);
-
-
-
-        // await emailService.send(
-        //   "baldomalisandro@hotmail.com",
-        //   `te damos la bienvenida, ${token}!`
-        // );
+        }          
 
         let respuesta = {
           mensaje: "La contraseña fue ser actualizada con exito",
@@ -99,8 +86,7 @@ class UsersService {
 
   async enviarEmailPasswordUpdate(datos) {
     
-        console.log(datos.email)
-        
+        console.log(datos.email)       
         
         const token = generarToken(datos);
 

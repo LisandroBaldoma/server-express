@@ -3,7 +3,7 @@ import { productsRouter } from "./api/productsRouter.js"
 import { cartRouter } from "./api/cartRouter.js";
 import { userRouter } from './api/userRouter.js';
 import { sessionsRouter } from './api/sessionsRouter.js'
-import { testRouter } from './api/testRouter.js';
+//import { testRouter } from './api/testRouter.js';
 import { docsRouter } from './documentacion.router.js';
 
 
@@ -21,7 +21,7 @@ apiRouters.use('/carts', cartRouter)
 apiRouters.use('/user', userRouter )
 apiRouters.use('/sessions', sessionsRouter) // http://localhost:8080/api/sessions
 
-apiRouters.use('/', testRouter)
+//apiRouters.use('/', testRouter)
 
 
 
