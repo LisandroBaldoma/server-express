@@ -9,9 +9,22 @@ export class User {
   #cart;
   #password;
   #rol;
+  #documents;
+  #last_connection;
 
-  constructor({ name, lastName, email, age, cart, password, rol }) {
-    this.#user_id = newId();
+  constructor({
+    user_id = newId(),
+    name,
+    lastName,
+    email,
+    age,
+    cart,
+    password,
+    rol,
+    documents,
+    last_connection = new Date(),
+  }) {
+    this.#user_id = user_id;
     this.#name = name;
     this.#lastName = lastName;
     this.#email = email;
@@ -19,20 +32,21 @@ export class User {
     this.#cart = cart;
     this.#password = password;
     this.#rol = rol;
+    this.#documents = documents;
+    this.#last_connection = last_connection;
   }
 
   set rol(value) {
-    if (value === 'user' && value !== 'premium') throw new Error('Solo puede cambiar el rol si es user o premium')
-    this.#rol = value
-    if(value === 'user'){
-      this.#rol = 'premium'
+    if (value === "user" && value !== "premium")
+      throw new Error("Solo puede cambiar el rol si es user o premium");
+    this.#rol = value;
+    if (value === "user") {
+      this.#rol = "premium";
     }
-    if(value === 'premium'){
-      this.#rol = 'user'
-    }  
-
+    if (value === "premium") {
+      this.#rol = "user";
+    }
   }
-
 
   get user_id() {
     return this.#user_id;
@@ -58,6 +72,12 @@ export class User {
   get rol() {
     return this.#rol;
   }
+  get documents() {
+    return this.#documents;
+  }
+  get last_connection() {
+    return this.#last_connection;
+  }
 
   // TODO CREAR FUNCION SET ROL
 
@@ -71,6 +91,8 @@ export class User {
       cart: this.#cart,
       password: this.#password,
       rol: this.#rol,
+      documents: this.#documents,
+      last_connection: this.#last_connection,
     };
   }
 }

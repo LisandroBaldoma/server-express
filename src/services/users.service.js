@@ -62,17 +62,18 @@ class UsersService {
           "Su nueva password y la confirmacion de la misma no coinciden"
         );
       } else {
-        let datosToken = decodificarToken(user.token)
-        
-        if(datosToken.email != userUpdate.email || datosToken.iat === datosToken.exp){
-          throw new Error(
-            "Token vencido o incorecto"
-          );
-        }else{
+        let datosToken = decodificarToken(user.token);
+
+        if (
+          datosToken.email != userUpdate.email ||
+          datosToken.iat === datosToken.exp
+        ) {
+          throw new Error("Token vencido o incorecto");
+        } else {
           userUpdate.password = hashearPassword(user.newPassword);
 
           userUpdate.save();
-        }          
+        }
 
         let respuesta = {
           mensaje: "La contraseña fue ser actualizada con exito",
@@ -83,35 +84,49 @@ class UsersService {
     }
     // TODO UPDATE CONTRASEÑA
   }
-
   async enviarEmailPasswordUpdate(datos) {
-    
-        console.log(datos.email)       
-        
-        const token = generarToken(datos);
+    console.log(datos.email);
 
-        console.log(token)
-        let option = {
-          from: "lrsolucionesintegrales@gmail.com",
-          to: datos.email, // list of receivers
-          subject: "Hello ✔", // Subject line
-          text: "Este mail es para recuperar la contraseña", // plain text body
-          html : `<div> <h3>Recuperar Contraseña</h3> <br> <p>Token: <br> ${token}</p> <br> <p>Link:</p><a>http://localhost:8080/api/user/passwordupdate</a></div>`
-        }
-        
+    const token = generarToken(datos);
 
-        // await emailService.send(
-        //   "baldomalisandro@hotmail.com",
-        //   `te damos la bienvenida, ${token}!`
-        // );
-        respuesta = await emailService.send(
-         option
-        );       
+    console.log(token);
+    let option = {
+      from: "lrsolucionesintegrales@gmail.com",
+      to: datos.email, // list of receivers
+      subject: "Hello ✔", // Subject line
+      text: "Este mail es para recuperar la contraseña", // plain text body
+      html: `<div> <h3>Recuperar Contraseña</h3> <br> <p>Token: <br> ${token}</p> <br> <p>Link:</p><a>http://localhost:8080/api/user/passwordupdate</a></div>`,
+    };
 
-        return respuesta;
-      }
+    // await emailService.send(
+    //   "baldomalisandro@hotmail.com",
+    //   `te damos la bienvenida, ${token}!`
+    // );
+    respuesta = await emailService.send(option);
+
+    return respuesta;
+  }
+  async saveDocuments(document, uid){
+    const user = await userRepository.findById(uid)
+    console.log(user)
+    console.log(document)
+
+    const documents = {
+      name: document[0].documents.fieldname,
+      reference: document.documents.path
     }
-    // TODO UPDATE CONTRASEÑA
-  
+    const profiles = {
+      name: document[1].profiles.fieldname,
+      reference: document.profiles.path
+    } 
+    const products = {
+      name: document[2].products.fieldname,
+      reference: document.products.path
+    }   
+
+    user.documents.push(documents,profiles,products)
+    user.save()
+  }
+}
 
 export const usersService = new UsersService();

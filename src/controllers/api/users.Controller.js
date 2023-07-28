@@ -66,3 +66,15 @@ export async function handletEmailPassword(req, res, next) {
   
  }
 }
+
+export async function handlePostUploadDocuments(req, res, next){
+  console.log('subir documentos')
+  console.log(req.params.uid)
+  console.log(req.file)
+  try {
+    const documents = await usersService.saveDocuments(req.files, req.params.uid)
+    
+  } catch (error) {
+    
+  }
+}

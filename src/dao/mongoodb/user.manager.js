@@ -14,6 +14,8 @@ const schemaUser = new mongoose.Schema(
     cart: { type: Schema.Types.ObjectId, ref: "carts", required: true },
     lastName: { type: String, required: true },
     rol: { type: String, enum: ["user", "admin", "premium"], default: "user" },
+    documents: { type: Array },
+    last_connection: {type: String},
   },
   { versionKey: false }
 );

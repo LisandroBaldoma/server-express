@@ -51,6 +51,9 @@ app.set("view engine", "handlebars");
 //Configuracion rutas del servidor
 app.use("/static", express.static("./static"));
 
+// carpeta publica para guardar documentos usuarios
+app.use("/usersFiles", express.static("./usersFiles"));
+
 // Configuracion Passport
 app.use(session);
 app.use(passportInitialize, passportSession);
